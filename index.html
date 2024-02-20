@@ -91,6 +91,7 @@
 
             <education_list></education_list>
             <skill-list></skill-list>
+            <interests_list></interests_list>
 
         </section>
 
@@ -150,7 +151,24 @@
     </ul>
 </template>
 
+<template id="vue_interests_list">
+    <section>
+        <h3>Interests</h3>
+        <ul class="row interests-list">
+            <li v-for="intrest in interests" class="col-6 col-md-4">
+                <article class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{intrest.title}}</h5>
+                        <p class="card-text">{{intrest.description}}</p>
+                    </div>
+                </article>
+            </li>
+        </ul>
+    </section>
+</template>
+
 <script src="libraries/bootstrap/js/bootstrap.js"></script>
+<script src="scripts/data.js"></script>
 <script src="scripts/index.js"></script>
 
 </body>
