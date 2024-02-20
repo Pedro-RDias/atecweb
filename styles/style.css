@@ -1,0 +1,11 @@
+/* About Me */
+.skill-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skill-list li {
+  margin-bottom: 10px;
+}
+/* .About Me */
