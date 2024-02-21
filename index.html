@@ -12,158 +12,163 @@
 </head>
 <body>
 <div id="app">
-    <vheader></vheader>
-    <vmain></vmain>
-    <vfooter></vfooter>
+    <header class="fixed-top">
+        <vnavbar></vnavbar>
+    </header>
+    <main>
+        <vbanner></vbanner>
+        <vabout></vabout>
+        <vportfolio></vportfolio>
+    </main>
+    <footer class="container-fluid">
+        <vcontact></vcontact>
+    </footer>
 </div>
 
-<template id="vue_header">
-    <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Pedro Ribeiro Dias</a>
-                <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-                        class="navbar-toggler" data-bs-target="#navbarSupportedContent"
-                        data-bs-toggle="collapse" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a aria-current="page" class="nav-link active" href="/">Homepage</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./aboutme.html">About me</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./portfolio.html">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./contacts.html">Contact</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./resume.html">Resume</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
-</template>
-
-
-<template id="vue_main">
-    <main class="container p-3">
-        <section class="card mb-3 p-5">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img alt="Pedro Dias Profile Photo" class="img-fluid rounded-start" src="./images/pedribei.jpg">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title">Wellcome 👋</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
-                            additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-
-            <h2 class="text-center">About me</h2>
-            <p>I am a software developer from Portugal. With a strong background in programming and a passion for
-                continuous
-                learning, I have acquired expertise in various languages including Python, TypeScript, and Golang. My
-                curiosity and drive for self-improvement have led me to constantly seek out new challenges and expand my
-                skillset.</p>
-            <p>Last year, I completed several specializations from Google, Meta, and some American Universities, further
-                enhancing my knowledge and proficiency in areas such as Software Development, Cybersecurity and Project
-                Management.</p>
-            <p>In addition to my technical skills, I had the privilege of working on multinational projects,
-                contributing to
-                applications used by users worldwide. These experiences have provided me with valuable insights into
-                global
-                software development practices and have sharpened my ability to collaborate effectively across diverse
-                teams
-                and cultures.</p>
-
-            <education_list></education_list>
-            <skill-list></skill-list>
-            <interests_list></interests_list>
-
-        </section>
-
-        <section>
-            <h2 class="text-center">Portfolio</h2>
-        </section>
-
-        <section>
-            <h2 class="text-center">Contact</h2>
-        </section>
-    </main>
-</template>
-
-<template id="vue_footer">
-    <footer class="container-fluid">
-        <div class="row">
-            <div class="col-12 text-center">
-                <p>© 2024 Pedro Ribeiro Dias</p>
+<!-- Header Components -->
+<template id="vue_navbar">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Pedro Ribeiro Dias</a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    class="navbar-toggler" data-bs-target="#navbarSupportedContent"
+                    data-bs-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a aria-current="page" class="nav-link active" href="#home">Homepage</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#aboutme">About me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contacts">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./resume.html">Resume</a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
+    </nav>
 </template>
 
+<!-- Main Components -->
 
-<template id="vue_education_list">
-    <section>
-        <h3>Education</h3>
+<template id="vue_banner">
+    <section class="page container-fluid" id="home">
         <div class="row">
-            <article class="card mb-3 col-12 col-md-6 col-lg-4 border-0" style="" v-for="edu in education">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img :alt="edu.title" :src="`./images/badges/${edu.badge}.png`" class="img-fluid rounded-start">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">{{edu.title}}</h5>
-                            <p class="card-text"><small class="text-body-secondary">{{edu.date}}</small></p>
-                        </div>
-                    </div>
+            <div class="col-12 col-md-6">
+                <img :alt="alt" :src="`./images/${img}`" class="img-fluid mx-auto profile-img">
+            </div>
+            <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
+                <h1 class="header-title">{{title}}</h1>
+                <div class="catch-phrases">
+                    <p>{{line}}</p>
                 </div>
+            </div>
+        </div>
+    </section>
+</template>
+
+<template id="vue_about">
+    <section class="container page" id="aboutme">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h2 class="text-center">{{title}}</h2>
+                <p v-for="line in description">{{line}}</p>
+                <certification_list></certification_list>
+            </div>
+            <div class="col-12 col-md-6">
+                <skill-list></skill-list>
+                <language_list></language_list>
+                <interests_list></interests_list>
+                <hobbies_list></hobbies_list>
+            </div>
+        </div>
+    </section>
+</template>
+
+<template id="vue_certification_list">
+    <section>
+        <h3>{{title}}</h3>
+        <div class="row">
+            <article class="" style="" v-for="cert in certifications">
+                <img :alt="cert.title" :src="`./images/badges/${cert.badge}.png`" class="img-fluid rounded-start">
+                {{cert}}
             </article>
         </div>
     </section>
 </template>
 
 <template id="vue_skill_list">
-    <h3>Skills</h3>
-    <input class="form-control" placeholder="Enter a skill" type="text" v-model="skill_search">
+    <section>
+        <h3>Skills</h3>
+        <input class="form-control" placeholder="Enter a skill" type="text" v-model="skill_search">
 
-    <ul class="row skill-list" id="skills">
-        <li class="col-4 col-md-3 col-lg-2" v-for="skill in filteredSkills">
-            <div class="row">
-                <img :alt='skill.name' :src='`https://skillicons.dev/icons?i=${skill.img}`' class="img-fluid col-4">
-                <span class="col-8 m-auto">{{ skill.name }}</span>
-            </div>
-        </li>
-    </ul>
+        <ul class="row skill-list" id="skills">
+            <li class="col-4 col-md-3 col-lg-2" v-for="skill in filteredSkills">
+
+                <img :alt='skill.name' :src='`https://skillicons.dev/icons?i=${skill.img}`' class="img-fluid">
+                <!--                <span class="col-8 m-auto">{{ skill.name }}</span>-->
+            </li>
+        </ul>
+    </section>
+</template>
+
+<template id="vue_language_list">
+    <section>
+        <h3>{{title}}</h3>
+        <ul class="language-list">
+            <li class="col-6 col-md-4" v-for="language in languages">
+                {{language}}
+            </li>
+        </ul>
+    </section>
 </template>
 
 <template id="vue_interests_list">
     <section>
-        <h3>Interests</h3>
+        <h3>{{title}}</h3>
         <ul class="row interests-list">
-            <li v-for="intrest in interests" class="col-6 col-md-4">
-                <article class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{intrest.title}}</h5>
-                        <p class="card-text">{{intrest.description}}</p>
-                    </div>
-                </article>
+            <li class="col-6 col-md-4" v-for="intrest in interests">
+                {{intrest}}
             </li>
         </ul>
+    </section>
+</template>
+
+<template id="vue_hobbies_list">
+    <section>
+        <h3>{{title}}</h3>
+        <ul>
+            <li v-for="hobbie in hobbies">
+                {{hobbie}}
+            </li>
+        </ul>
+    </section>
+</template>
+
+<template id="vue_portfolio">
+    <section class="container page" id="portfolio">
+        <h2 class="text-center">{{title}}</h2>
+        <article v-for="proj in projects">{{proj}}</article>
+    </section>
+</template>
+
+<template id="vue_contact">
+    <section class="container page" id="contacts">
+        <h2 class="text-center">Contact</h2>
+        <div class="row">
+            <div class="col-12 text-center">
+                <p>© 2024 Pedro Ribeiro Dias</p>
+            </div>
+        </div>
     </section>
 </template>
 
