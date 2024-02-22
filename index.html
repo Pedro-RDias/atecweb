@@ -18,6 +18,17 @@
     <main>
         <vbanner></vbanner>
         <vabout></vabout>
+        <div class="page container" id="skillspage">
+            <div class="row">
+
+                <div class="col-12 col-md-6">
+                    <skill-list></skill-list>
+                </div>
+                <div class="col-12 col-md-6">
+                    <language_list></language_list>
+                </div>
+            </div>
+        </div>
         <vportfolio></vportfolio>
     </main>
     <footer class="container-fluid">
@@ -27,7 +38,7 @@
 
 <!-- Header Components -->
 <template id="vue_navbar">
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav :class="backgroundStyle">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Pedro Ribeiro Dias</a>
             <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
@@ -42,6 +53,9 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#aboutme">About me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skillspage">Skills</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#portfolio">Portfolio</a>
@@ -59,34 +73,32 @@
 </template>
 
 <!-- Main Components -->
-
 <template id="vue_banner">
-    <section class="page container-fluid" id="home">
-        <div class="row">
-            <div class="col-12 col-md-6">
+    <section class="page container-fluid d-flex align-content-md-center" id="home">
+        <div class="row flex-fill d-flex align-content-md-center align-content-start pt-5 pt-md-0">
+            <div class="col-12 col-md-6 my-md-auto">
                 <img :alt="alt" :src="`./images/${img}`" class="img-fluid mx-auto profile-img">
             </div>
-            <div class="col-12 col-md-6 d-flex flex-column justify-content-center">
-                <h1 class="header-title">{{title}}</h1>
+            <div class="col-12 col-md-6 text-center text-md-start d-flex flex-column justify-content-center flex-grow-1">
+                <h1 class="header-title"><span class="banner-emoji">{{emoji}}</span> {{title}}</h1>
                 <div class="catch-phrases">
-                    <p>{{line}} <span style="color: #ffc107; font-weight: 900;">|</span></p>
+                    <p>{{subtitle}}<span class="catch-phrase">{{line}}</span><span class="typing-courser">|</span></p>
                 </div>
             </div>
         </div>
     </section>
 </template>
 
+<!-- About -->
 <template id="vue_about">
     <section class="container page" id="aboutme">
         <div class="row">
+            <h2 class="text-center col-12 mb-md-4 page-title">{{title}}</h2>
             <div class="col-12 col-md-6">
-                <h2 class="text-center">{{title}}</h2>
-                <p v-for="line in description">{{line}}</p>
+                <p class="" v-for="line in description">{{line}}</p>
                 <certification_list></certification_list>
             </div>
             <div class="col-12 col-md-6">
-                <skill-list></skill-list>
-                <language_list></language_list>
                 <interests_list></interests_list>
                 <hobbies_list></hobbies_list>
             </div>
@@ -95,84 +107,145 @@
 </template>
 
 <template id="vue_certification_list">
-    <section>
-        <h3>{{title}}</h3>
-        <div class="row">
-            <article class="" style="" v-for="cert in certifications">
-                <img :alt="cert.title" :src="`./images/badges/${cert.badge}.png`" class="img-fluid rounded-start">
-                {{cert}}
-            </article>
+    <section class="pt-5">
+        <div class="carousel slide" data-bs-ride="carousel" id="carouselCerts">
+            <div class="carousel-inner">
+                <div :class="{active: i === 1}" class="carousel-item text-center" v-for="i in Math.ceil(certTotal / 3)">
+                    <div class="d-flex justify-content-between justify-content-md-evenly">
+                        <img :alt="`${cert.title} - ${cert.institution} - ${cert.date}`"
+                             :data-bs-title="`${cert.title} - ${cert.institution} - ${cert.date}`"
+                             :key="cert.badge"
+                             :src="`./images/badges/${cert.badge}.png`"
+                             class="img-fluid img-cert"
+                             data-bs-toggle="tooltip"
+                             v-for="cert in certifications.slice((i - 1) * 3, i * 3)"
+                        >
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 </template>
-
-<template id="vue_skill_list">
-    <section>
-        <h3>Skills</h3>
-        <input class="form-control" placeholder="Enter a skill" type="text" v-model="skill_search">
-
-        <ul class="row skill-list" id="skills">
-            <li class="col-4 col-md-3 col-lg-2" v-for="skill in filteredSkills">
-
-                <img :alt='skill.name' :src='`https://skillicons.dev/icons?i=${skill.img}`' class="img-fluid">
-                <!--                <span class="col-8 m-auto">{{ skill.name }}</span>-->
-            </li>
-        </ul>
-    </section>
-</template>
-
-<template id="vue_language_list">
-    <section>
-        <h3>{{title}}</h3>
-        <ul class="language-list">
-            <li class="col-6 col-md-4" v-for="language in languages">
-                {{language}}
-            </li>
-        </ul>
-    </section>
-</template>
-
 <template id="vue_interests_list">
-    <section>
-        <h3>{{title}}</h3>
-        <ul class="row interests-list">
-            <li class="col-6 col-md-4" v-for="intrest in interests">
-                {{intrest}}
+    <section class="mt-5 mt-md-0">
+        <h3 class="text-center page-subtitle">{{title}}</h3>
+        <ul class="row hobbie-list mt-3">
+            <li class="col-4 text-center" v-for="int in interests">
+                <img :alt="int.title" :src="`/images/interests/${int.icon}.svg`" class="img-fluid hobbie-img">
+                <p>{{int.title}}</p>
             </li>
         </ul>
     </section>
 </template>
-
 <template id="vue_hobbies_list">
-    <section>
-        <h3>{{title}}</h3>
-        <ul>
-            <li v-for="hobbie in hobbies">
-                {{hobbie}}
+    <section class="mt-5 ">
+        <h3 class="text-center page-subtitle">{{title}}</h3>
+        <ul class="row hobbie-list mt-3">
+            <li class="col-4 text-center" v-for="hobbie in hobbies">
+                <img :alt="hobbie.title" :src="`/images/hobbies/${hobbie.icon}.svg`" class="img-fluid hobbie-img">
+                <p>{{hobbie.title}}</p>
             </li>
         </ul>
     </section>
 </template>
+<!-- .About -->
+
+<!-- Skills - About 2 -->
+<template id="vue_skill_list">
+    <section class="px-md-5">
+        <h3 class="page-title text-center">Skills</h3>
+        <div class="my-3 my-sm-5 input-group input-group-lg">
+            <label class="form-label" for="skill-searchbar">{{input_label}}</label>
+            <div class="input-group">
+                <input :placeholder="input_placeholder"
+                       class="form-control form-control-lg"
+                       id="skill-searchbar"
+                       type="text"
+                       v-model="skill_search">
+            </div>
+        </div>
+        <ul class="row skill-list" id="skills">
+            <li class="col-4 col-md-3" v-for="skill in filteredSkills">
+                <article class="text-center">
+                    <img :alt='skill.name' :src='`https://skillicons.dev/icons?i=${skill.img}`' class="img-fluid">
+                    <p class="pt-2">{{skill.name}}</p>
+                </article>
+            </li>
+        </ul>
+    </section>
+</template>
+<template id="vue_language_list">
+    <section class="px-md-5">
+        <h3 class="page-title text-center">{{title}}</h3>
+        <ul class="language-list mt-3 mt-sm-5">
+            <li class="py-2" v-for="language in languages">
+                <article>
+                    <p>{{language.name}}</p>
+                    <div>
+                        <div :aria-valuenow="language.percentage" aria-label="Basic example" aria-valuemax="100"
+                             aria-valuemin="0" class="progress" role="progressbar">
+                            <div :style="{width: `${language.percentage}%`}" class="progress-bar"></div>
+                        </div>
+                    </div>
+                </article>
+            </li>
+        </ul>
+    </section>
+</template>
+<!-- .Skills - About 2 -->
 
 <template id="vue_portfolio">
     <section class="container page" id="portfolio">
-        <h2 class="text-center">{{title}}</h2>
-        <article v-for="proj in projects">{{proj}}</article>
-    </section>
-</template>
-
-<template id="vue_contact">
-    <section class="container page" id="contacts">
-        <h2 class="text-center">Contact</h2>
-        <div class="row">
-            <div class="col-12 text-center">
-                <p>© 2024 Pedro Ribeiro Dias</p>
+        <h2 class="page-title text-center">{{title}}</h2>
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-6 col-lg-3 gy-3 gy-md-5 gx-0 gx-3 d-flex" v-for="proj in projects">
+                <article class="card border-1 border-opacity-25 border-info-subtle">
+                    <img :alt="`Image for ${proj.title} project`" :src="proj.img" class="card-img-top">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">{{proj.title}}</h5>
+                        <div class="flex-grow-1">
+                            <p class="card-text">{{proj.description}}</p>
+                            <p><span class="badge text-bg-secondary mx-1" v-for="tag in proj.stack">{{tag}}</span></p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <a :href="proj.linkProject" class="btn d-flex text-center btn-outline-info" target="_blank">{{linkProjectLabel}}</a>
+                            <a :href="proj.linkCodeLabel" class="btn d-flex text-center btn-outline-info"
+                               target="_blank">{{linkCodeLabel}}</a>
+                        </div>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 </template>
 
-<script src="libraries/bootstrap/js/bootstrap.js"></script>
+<template id="vue_contact">
+    <section class="container page d-flex flex-column" id="contacts">
+        <h2 class="page-title text-center">{{title}}</h2>
+        <div class="row flex-grow-1 pt-3 pt-sm-5">
+            <section class="col-12 col-md-6">
+
+            </section>
+            <section class="col-12 col-md-6">
+                <h3 class="page-subtitle text-center pb-3">{{formTitle}}</h3>
+                <form class="row g-3 needs-validation">
+                    <div v-for="ff in formFields" class="col-12" :class="{ 'col-md-6': ff.size === 6 }">
+                        <label class="form-label" :for="ff.name">{{ff.label}}</label>
+                        <input v-if="ff.element === 'input'" class="form-control" :id="ff.name" :type="ff.type" :placeholder="ff.placeholder" required>
+                        <textarea v-if="ff.element === 'textarea'" class="form-control" :id="ff.name" :placeholder="ff.placeholder" required></textarea>
+                        <div class="invalid-feedback">
+                            Please provide a valid city.
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-info col-12 my-3 mx-2" type="submit">Submit form</button>
+                </form>
+            </section>
+        </div>
+        <p class="text-center">© 2024 Pedro Ribeiro Dias</p>
+    </section>
+</template>
+
+<script src="libraries/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="scripts/data.js"></script>
 <script src="scripts/index.js"></script>
 

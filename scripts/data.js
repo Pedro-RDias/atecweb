@@ -1,58 +1,62 @@
 const skills = [
-    {name: "JavaScript", img: "js"},
-    {name: "TypeScript", img: "ts"},
-    {name: "Go", img: "go"},
-    {name: "Python", img: "py"},
-    {name: "Node.js", img: "nodejs"},
-    {name: "Express", img: "express"},
-    {name: "Nest.js", img: "nestjs"},
-    {name: "React", img: "react"},
-    {name: "Redux", img: "redux"},
-    {name: "Next.js", img: "nextjs"},
-    {name: "Vue.js", img: "vue"},
-    {name: "Nuxt.js", img: "nuxtjs"},
-    {name: "Angular", img: "angular"},
-    {name: "Jest", img: "jest"},
-    {name: "Vite", img: "vite"},
-    {name: "Django", img: "django"},
-    {name: "Flask", img: "flask"},
-    {name: "FastAPI", img: "fastapi"},
-    {name: "C#", img: "cs"},
-    {name: ".NET", img: "dotnet"},
-    {name: "C", img: "c"},
-    {name: "C++", img: "cpp"},
-    {name: "Java", img: "java"},
-    {name: "Spring", img: "spring"},
-    {name: "Kotlin", img: "kotlin"},
-    {name: "Android Studio", img: "androidstudio"},
-    {name: "Rust", img: "rust"},
-    {name: "Solidity", img: "solidity"},
-    {name: "MongoDB", img: "mongodb"},
-    {name: "PostgreSQL", img: "postgres"},
-    {name: "MySQL", img: "mysql"},
-    {name: "Redis", img: "redis"},
-    {name: "SQLite", img: "sqlite"},
-    {name: "HTML", img: "html"},
-    {name: "CSS", img: "css"},
-    {name: "Sass", img: "sass"},
-    {name: "Bootstrap", img: "bootstrap"},
-    {name: "ReactiveX", img: "reactivex"},
-    {name: "Postman", img: "postman"},
-    {name: "Docker", img: "docker"},
-    {name: "Kubernetes", img: "kubernetes"},
-    {name: "Linux", img: "linux"},
-    {name: "Bash", img: "bash"},
-    {name: "Git", img: "git"},
-    {name: "GitHub Actions", img: "githubactions"},
+    {name: "JavaScript", img: "js", tags: ["frontend", "backend", "fullstack", "web", "programming language"]},
+    {name: "TypeScript", img: "ts", tags: ["frontend", "backend", "fullstack", "web", "programming language"]},
+    {name: "Go", img: "go", tags: ["backend", "programming language"]},
+    {name: "Python", img: "py", tags: ["backend", "programming language"]},
+    {name: "Node.js", img: "nodejs", tags: ["backend", "web", "framework"]},
+    {name: "Express", img: "express", tags: ["backend", "web", "framework"]},
+    {name: "Nest.js", img: "nestjs", tags: ["backend", "web", "framework"]},
+    {name: "React", img: "react", tags: ["frontend", "web", "library"]},
+    {name: "Redux", img: "redux", tags: ["frontend", "state management", "library"]},
+    {name: "Next.js", img: "nextjs", tags: ["frontend", "web", "framework"]},
+    {name: "Vue.js", img: "vue", tags: ["frontend", "web", "framework"]},
+    {name: "Nuxt.js", img: "nuxtjs", tags: ["frontend", "web", "framework"]},
+    {name: "Angular", img: "angular", tags: ["frontend", "web", "framework"]},
+    {name: "Jest", img: "jest", tags: ["testing", "framework"]},
+    {name: "Vite", img: "vite", tags: ["frontend", "web", "build tool"]},
+    {name: "Django", img: "django", tags: ["backend", "web", "framework", "python"]},
+    {name: "Flask", img: "flask", tags: ["backend", "web", "framework", "python"]},
+    {name: "FastAPI", img: "fastapi", tags: ["backend", "web", "framework", "python"]},
+    {name: "C#", img: "cs", tags: ["backend", "desktop", "programming language"]},
+    {name: ".NET", img: "dotnet", tags: ["backend", "desktop", "framework", "c#"]},
+    {name: "C", img: "c", tags: ["backend", "system", "programming language"]},
+    {name: "C++", img: "cpp", tags: ["backend", "system", "programming language"]},
+    {name: "Java", img: "java", tags: ["backend", "mobile", "programming language"]},
+    {name: "Spring", img: "spring", tags: ["backend", "framework"]},
+    {name: "Kotlin", img: "kotlin", tags: ["backend", "mobile", "programming language"]},
+    {name: "Android Studio", img: "androidstudio", tags: ["mobile", "development environment"]},
+    {name: "Rust", img: "rust", tags: ["backend", "system", "programming language"]},
+    {name: "Solidity", img: "solidity", tags: ["blockchain", "smart contracts", "programming language"]},
+    {name: "MongoDB", img: "mongodb", tags: ["database", "NoSQL"]},
+    {name: "PostgreSQL", img: "postgres", tags: ["database", "SQL"]},
+    {name: "MySQL", img: "mysql", tags: ["database", "SQL"]},
+    {name: "Redis", img: "redis", tags: ["database", "caching"]},
+    {name: "SQLite", img: "sqlite", tags: ["database", "SQL"]},
+    {name: "HTML", img: "html", tags: ["frontend", "web", "markup language"]},
+    {name: "CSS", img: "css", tags: ["frontend", "web", "stylesheet language"]},
+    {name: "Sass", img: "sass", tags: ["frontend", "web", "stylesheet language"]},
+    {name: "Bootstrap", img: "bootstrap", tags: ["frontend", "web", "framework"]},
+    {name: "ReactiveX", img: "reactivex", tags: ["reactive programming", "library"]},
+    {name: "Postman", img: "postman", tags: ["API", "testing", "tool"]},
+    {name: "Docker", img: "docker", tags: ["containerization", "tool"]},
+    {name: "Kubernetes", img: "kubernetes", tags: ["container orchestration", "tool"]},
+    {name: "Linux", img: "linux", tags: ["operating system"]},
+    {name: "Bash", img: "bash", tags: ["scripting", "shell"]},
+    {name: "Git", img: "git", tags: ["version control", "tool"]},
+    {name: "GitHub Actions", img: "githubactions", tags: ["CI/CD", "automation", "tool"]},
 ];
 
 const skills_en =  {
     title : "Skills",
+    input_label: "You can search for more: ",
+    input_placeholder: "Search for a language, framework, or tool",
     skills: skills,
 };
 
 const banner_en = {
-    title: "Hi 👋, I'm Pedro Dias",
+    emoji: "👋",
+    title: "Hi, I'm Pedro Dias",
+    subtitle: "I'm a ",
     jobTitles: [
         "Full Stack Developer",
         "Cybersecurity Enthusiast",
@@ -68,11 +72,10 @@ const about_en = {
     description: ["I am a software developer from Portugal. With a strong background in programming and a passion for continuous learning, " +
     "I have acquired expertise in various languages including Python, TypeScript, and Golang. My curiosity and drive for self-improvement " +
     "have led me to constantly seek out new challenges and expand my skillset.",
-        "Last year, I completed several specializations from Google, Meta, and some American Universities, further enhancing my knowledge " +
-        "and proficiency in areas such as Software Development, Cybersecurity and Project Management.",
-        "In addition to my technical skills, I had the privilege of working on multinational projects, contributing to applications used " +
+        "I had the privilege of working on multinational projects, contributing to applications used " +
         "by users worldwide. These experiences have provided me with valuable insights into global software development practices and have " +
-        "sharpened my ability to collaborate effectively across diverse teams and cultures."
+        "sharpened my ability to collaborate effectively across diverse teams and cultures.",
+        "I completed several specializations from Google, Meta, and some other institutions:"
     ],
 }
 
@@ -80,10 +83,22 @@ const certification_en = {
     title: "Certifications",
     certifications: [
         {
+            title: "Meta Fulll Satck Engineer",
+            institution: "Coursera",
+            date: "2023",
+            badge: "meta-full-stack-engineer-certificate",
+        },
+        {
             title: "Google Cibersecurity Professional Certificate",
             institution: "Coursera",
             date: "2023",
             badge: "google-cybersecurity-certificate",
+        },
+        {
+            title: "Meta Generalist Software Engineer",
+            institution: "Coursera",
+            date: "2023",
+            badge: "meta-generalist-software-engineer-certificate",
         },
         {
             title: "Google IT Automation with Python Professional Certificate",
@@ -97,18 +112,6 @@ const certification_en = {
             institution: "Coursera",
             date: "2023",
             badge: "google-project-management-certificate.2",
-        },
-        {
-            title: "Meta Fulll Satck Engineer",
-            institution: "Coursera",
-            date: "2023",
-            badge: "meta-full-stack-engineer-certificate",
-        },
-        {
-            title: "Meta Generalist Software Engineer",
-            institution: "Coursera",
-            date: "2023",
-            badge: "meta-generalist-software-engineer-certificate",
         },
         {
             title: "Google Data Analytics Professional Certificate",
@@ -131,22 +134,22 @@ const languages_en = {
         {
             name: "English",
             level: "Full Professional Proficiency",
-            percentage: 100,
+            percentage: 99,
         },
         {
             name: "Spanish",
             level: "Professional Proficiency",
-            percentage: 70,
+            percentage: 60,
         },
         {
             name: "French",
             level: "Elementary Proficiency",
-            percentage: 40,
+            percentage: 30,
         },
         {
             name: "German",
             level: "Elementary Proficiency",
-            percentage: 40,
+            percentage: 25,
         },
     ],
 
@@ -156,36 +159,16 @@ const interests_en = {
     title: "Interests",
     interests: [
         {
-            title: "Open Source",
-            description: "I am passionate about open source software and I love to contribute to open source projects.",
-        },
-        {
             title: "Cybersecurity",
-            description: "I am passionate about cybersecurity and I am always looking for ways to improve my cybersecurity skills.",
+            icon: "cyber",
         },
         {
-            title: "Artificial Intelligence",
-            description: "I am passionate about artificial intelligence and I am always looking for ways to improve my artificial intelligence skills.",
-        },
-        {
-            title: "Blockchain",
-            description: "I am passionate about blockchain and I am always looking for ways to improve my blockchain skills.",
-        },
-        {
-            title: "Cloud Computing",
-            description: "I am passionate about cloud computing and I am always looking for ways to improve my cloud computing skills.",
-        },
-        {
-            title: "DevOps",
-            description: "I am passionate about DevOps and I am always looking for ways to improve my DevOps skills.",
-        },
-        {
-            title: "Machine Learning",
-            description: "I am passionate about machine learning and I am always looking for ways to improve my machine learning skills.",
+            title: "AI and Machine Learning",
+            icon: "ai",
         },
         {
             title: "Web Development",
-            description: "I am passionate about web development and I am always looking for ways to improve my web development skills.",
+            icon: "web",
         },
     ]
 };
@@ -194,31 +177,29 @@ const hobbies_en = {
     title: "Hobbies",
     hobbies: [
         {
-
-            title: "Listening to Audiobooks",
-            description: "I love to listen to audiobooks and I am always looking for new audiobooks to listen to.",
+            title: "Audiobooks",
             icon: "audiobooks",
         },
         {
             title: "Writing",
-            description: "I love to write and I am always looking for new things to write about.",
             icon: "writing",
         },
         {
             title: "Music",
-            description: "I love to listen to music and I am always looking for new music to listen to.",
             icon: "music",
         },
         {
             title: "Traveling",
-            description: "I love to travel and I am always looking for new places to visit.",
             icon: "travel",
         },
         {
             title: "Cooking",
-            description: "I love to cook and I am always looking for new recipes to try.",
             icon: "cooking",
         },
+        {
+            title: "Hiking",
+            icon: "hiking",
+        }
     ]
 };
 
@@ -226,42 +207,62 @@ const hobbies_en = {
 
 const portfolio_en = {
     title: "Portfolio",
+    linkProjectLabel: "Try it out",
+    linkCodeLabel: "Check the code",
     projects: [
         {
             title: "Ticketing App",
-            description: "An app for selling and buying tickets for events. Made with React, Next.js, Golang, MongoDB, PostgreSQL, and Redis. Using microservices architecture, Docker, and Kubernetes.",
-            img: "ticketing-app",
+            description: "An app for selling and buying tickets for events",
+            img: "https://placehold.co/400X250",
+            linkProject: "https://github.com/Pedro-RDias",
+            linkCode: "https://github.com/Pedro-RDias",
+            stack: ["React", "Node.js", "MongoDB", "Docker", "Kubernetes", "GitHub Actions", "HTML", "CSS", "TypeScript", "Redux", "Microservices"]
         },
         {
             title: "E-commerce App",
-            description: "An app for selling and buying products. Made with FastAPI, React, MongoDB and Bootstrap.",
-            img: "e-commerce-app",
+            description: "An app for selling and buying products",
+            img: "https://placehold.co/400X250",
+            linkProject: "https://github.com/Pedro-RDias",
+            linkCode: "https://github.com/Pedro-RDias",
+            stack: ["Nest.js", "PostgreSQL", "Docker", "Kubernetes", "GitHub Actions", "HTML", "CSS", "TypeScript"]
         },
         {
             title: "Social Media App",
-            description: "An app for sharing posts and photos. Made with Django, React, PostgreSQL, and Bootstrap.",
-            img: "social-media-app",
+            description: "An app for sharing posts and photos",
+            img: "https://placehold.co/400X250",
+            linkProject: "https://github.com/Pedro-RDias",
+            linkCode: "https://github.com/Pedro-RDias",
+            stack: ["Vue.js", "Express", "MongoDB", "Docker", "Kubernetes", "GitHub Actions", "HTML", "CSS", "TypeScript"]
         },
         {
             title: "Blog App",
-            description: "An app for writing and sharing blog posts. Made with Flask, React, SQLite, and Sass.",
-            img: "blog-app",
+            description: "An app for writing and sharing blog posts",
+            img: "https://placehold.co/400X250",
+            linkProject: "https://github.com/Pedro-RDias",
+            linkCode: "https://github.com/Pedro-RDias",
+            stack: ["Next.js", "Flask", "PostgreSQL", "Docker", "Kubernetes", "GitHub Actions", "HTML", "CSS", "TypeScript"]
         },
         {
             title: "Chat App",
-            description: "An app for sending and receiving messages. Made with Nest.js, React, MySQL, and Sass.",
-            img: "chat-app",
+            description: "An app for sending and receiving messages",
+            img: "https://placehold.co/400X250",
+            linkProject: "https://github.com/Pedro-RDias",
+            linkCode: "https://github.com/Pedro-RDias",
+            stack: ["Angular", "Django", "PostgreSQL", "Docker", "Kubernetes", "GitHub Actions", "HTML", "CSS", "TypeScript"]
         },
         {
             title: "E-learning App",
-            description: "An app for publishing and selling online courses. Made with Node.js, Vue.js and MongoDB.",
-            img: "e-learning-app",
+            description: "An app for publishing and selling online courses",
+            img: "https://placehold.co/400X250",
+            linkProject: "https://github.com/Pedro-RDias",
+            linkCode: "https://github.com/Pedro-RDias",
+            stack: ["Nuxt.js", "FastAPI", "MongoDB", "Docker", "Kubernetes", "GitHub Actions", "HTML", "CSS", "TypeScript"]
         },
     ],
 }
 
 const contact_en = {
-    title: "Contact info",
+    title: "Contacts",
     socials: [
         {
             name: "GitHub",
@@ -276,24 +277,39 @@ const contact_en = {
             message: "Check out my LinkedIn profile",
         },
     ],
+    formTitle: "Get in touch",
     formFields: [
         {
-            name: "name",
+            name: "firstName",
             type: "text",
-            placeholder: "Name",
-            label: "What's your name?",
+            placeholder: "First Name",
+            label: "What's your first name?",
+            size: 6,
+            element: "input",
+        },
+        {
+            name: "lastName",
+            type: "text",
+            placeholder: "Last Name",
+            label: "What's your last name?",
+            size: 6,
+            element: "input",
         },
         {
             name: "email",
             type: "email",
             placeholder: "Email",
             label: "What's your email?",
+            size: 12,
+            element: "input",
         },
         {
             name: "message",
             type: "text",
             placeholder: "Message",
             label: "What's your message?",
+            size: 12,
+            element: "textarea",
         }
     ],
 }

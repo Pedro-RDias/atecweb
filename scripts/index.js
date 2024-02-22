@@ -9,6 +9,39 @@ const app = Vue.createApp({
 // Header Components
 app.component('vnavbar', {
     template: '#vue_navbar',
+    setup() {
+        const showBackround = Vue.reactive({
+            show: false,
+            toggleShow() {
+                this.show = window.scrollY > window.innerHeight;
+            }
+        })
+        return {
+            showBackround
+        }
+    },
+    created() {
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    unmounted() {
+        window.removeEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+        handleScroll(event) {
+            // Any code to be executed when the window is scrolled
+            if (
+                window.scrollY > window.innerHeight && !this.showBackround.show
+                || window.scrollY < window.innerHeight && this.showBackround.show
+            ) this.showBackround.toggleShow();
+        }
+    },
+    computed: {
+        backgroundStyle: {
+            get() {
+                return this.showBackround.show ? 'navbar navbar-expand-lg bg-body-tertiary' : 'navbar navbar-expand-lg bg-body-transparent';
+            }
+        }
+    }
 });
 
 // Main Components
@@ -20,20 +53,20 @@ app.component('vbanner', {
             lineLength: 0,
             isPaused: false,
             isWritting: false,
-            addLetter () {
+            addLetter() {
                 this.lineLength++;
             },
-            removeLetter () {
+            removeLetter() {
                 this.lineLength--;
             },
-            resumeAnimation () {
+            resumeAnimation() {
                 this.isPaused = false;
             },
-            startWritting (n) {
+            startWritting(n) {
                 this.isWritting = true;
                 this.index = (this.index + 1) % n;
             },
-            stopWritting () {
+            stopWritting() {
                 this.isWritting = false;
                 this.isPaused = true;
             },
@@ -64,7 +97,7 @@ app.component('vbanner', {
             }
 
 
-        }, 75);
+        }, 50);
         return () => clearInterval(timeRef);
     },
     data() {
@@ -79,8 +112,7 @@ app.component('vbanner', {
             }
         }
     },
-    methods: {
-    }
+    methods: {}
 });
 
 app.component('vabout', {
@@ -103,6 +135,13 @@ app.component('certification_list', {
         return {
             ...certification_en
         }
+    },
+    computed: {
+        certTotal: {
+            get() {
+                return this.certifications.length;
+            }
+        }
     }
 });
 
@@ -123,14 +162,20 @@ app.component('skill-list', {
     computed: {
         filteredSkills: {
             get() {
-                return skills.filter(skill => skill.name.toLowerCase().includes(this.skill_search.toLowerCase())).slice(0, 6);
+                const s = skills.filter(skill => {
+                    if (this.skill_search === '') return true;
+                    else if (skill.name.toLowerCase().includes(this.skill_search.toLowerCase())) return true;
+                    else return skill.tags.some(keyword => keyword.toLowerCase().includes(this.skill_search.toLowerCase()));
+                });
+
+                return s.length > 0 ? s.slice(0,12) : this.skills.slice(0,12);
             }
         }
 
     }
 });
 
-app.component('language_list',{
+app.component('language_list', {
     template: '#vue_language_list',
     data() {
         return {
@@ -179,3 +224,9 @@ app.component('vcontact', {
 
 
 app.mount('#app')
+
+
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))

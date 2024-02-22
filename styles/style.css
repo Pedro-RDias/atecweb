@@ -1,36 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+:root {
+    --title-accent: #ffe69c;
+    --font-famaily-accent: 'VT323', monospace;
+}
+
 .page {
     min-height: 100vh;
     padding-top: 70px;
+    /*height: 100vh;*/
+    /*overflow-y: scroll;*/
+    /*--ms-overflow-style: none;*/
+    /*scrollbar-width: none;*/
 }
-
-/* About Me */
-.skill-list {
+ul {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-.skill-list li {
-    margin-bottom: 10px;
+.page-title {
+    font-size: 2.5rem;
+    font-weight: 500;
+    color: var(--title-accent);
+    font-family: var(--font-famaily-accent);
+    letter-spacing: 3px;
 }
 
-.interests-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+.page-subtitle {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--title-accent);
+    font-family: var(--font-famaily-accent);
+    letter-spacing: 1px;
 }
-
-/* .About Me */
-
+/* Banner */
 .profile-img {
     display: block;
     max-height: 70vh;
-    opacity: 0.85;
+    filter: brightness(75%) ;
+    opacity: 0.9;
     clip-path: polygon(0% 0%,
     100% 0%,
     100% 75%,
     0% 100%
     );
+}
+
+.banner-emoji {
+    font-size: 2rem;
+
 }
 
 #home {
@@ -49,3 +68,72 @@
     background-position: center;
     z-index: -1;
 }
+
+.typing-courser {
+    font-weight: 900;
+    color: var(--title-accent);
+    font-size: 1.5rem;
+    animation: blink 0.5s infinite;
+    font-family: var(--font-famaily-accent);
+    transition: ease-in 0.5s;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+
+}
+
+.catch-phrase {
+    color: #ffe69c;
+    font-weight: 500;
+    font-family: var(--font-famaily-accent);
+    letter-spacing: 1px;
+    font-size: 1.3rem;
+}
+
+
+@media (max-width: 768px) {
+    .profile-img {
+        max-height: 40vh;
+    }
+}
+/* Banner */
+
+/* About Me */
+.skill-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skill-list li {
+    margin-bottom: 10px;
+}
+
+.interests-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.hobbie-img{
+    max-height: 70px;
+}
+
+.hobbie-list{
+    list-style: none;
+}
+
+.img-cert {
+    max-height: 120px;
+}
+/* .About Me */
+
