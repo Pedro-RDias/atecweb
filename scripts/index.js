@@ -15,48 +15,56 @@ app.component('vnavbar', {
 app.component('vbanner', {
     template: '#vue_banner',
     setup() {
-        const index = Vue.ref(0);
-        const lineLength = Vue.ref(0);
-        const settings  = Vue.ref({
-            isWritting: true,
-            isPaused: false
-        });
-        const isPaused = Vue.ref(false);
+        const phraseStore = Vue.reactive({
+            index: 0,
+            lineLength: 0,
+            isPaused: false,
+            isWritting: false,
+            addLetter () {
+                this.lineLength++;
+            },
+            removeLetter () {
+                this.lineLength--;
+            },
+            resumeAnimation () {
+                this.isPaused = false;
+            },
+            startWritting (n) {
+                this.isWritting = true;
+                this.index = (this.index + 1) % n;
+            },
+            stopWritting () {
+                this.isWritting = false;
+                this.isPaused = true;
+            },
+        })
         return {
-            index,
-            lineLength,
-            settings,
-            isPaused
+            phraseStore
         }
     },
     created() {
         let timeRef;
-        let timeRef2;
         timeRef = setInterval(() => {
-            if (!this.isPaused){
-                if (this.line.length <= this.catch_phrases[this.index].length && this.isWritting) {
-                    this.addLetter();
-                } else if (this.line.length === this.catch_phrases[this.index].length && this.isWritting) {
-                    this.pauseAnimation();
-                    timeRef2 = setTimeout(() => {
-                        this.resumeAnimantion();
-                    }, 1500);
-                } else if (this.line.length > 0 && !this.isWritting) {
-                    this.removeLetter();
+            if (this.phraseStore.isPaused) return;
+            if (this.phraseStore.isWritting) {
+                if (this.phraseStore.lineLength < this.jobTitles[this.phraseStore.index].length) {
+                    this.phraseStore.addLetter();
+                } else {
+                    this.phraseStore.stopWritting();
+                    setTimeout(() => {
+                        this.phraseStore.resumeAnimation();
+                    }, 2000);
                 }
-            // else if (this.line.length >=0 && !this.isWritting) {
-            //     this.lineLength--;
-            // } else if (this.line.length === 0 && !this.isWritting) {
-            //     this.write = true;
-            //     this.isPaused = true;
-            //     setTimeout(() => {
-            //         this.index = (this.index + 1) % this.catch_phrases.length;
-            //         this.isPaused = false;
-            //     }, 1500);
-            // } else this.write = false;
+            } else {
+                if (this.phraseStore.lineLength > 0) {
+                    this.phraseStore.removeLetter();
+                } else {
+                    this.phraseStore.startWritting(this.jobTitles.length);
+                }
             }
-            console.log(this.lineLength, this.isWritting, this.isPaused);
-        }, 70);
+
+
+        }, 75);
         return () => clearInterval(timeRef);
     },
     data() {
@@ -67,31 +75,11 @@ app.component('vbanner', {
     computed: {
         line: {
             get() {
-                return this.catch_phrases[this.index].slice(0, this.lineLength) + '|';
+                return this.jobTitles[this.phraseStore.index].slice(0, this.phraseStore.lineLength);
             }
         }
     },
     methods: {
-        nextPhrase() {
-            this.index = (this.index + 1) % this.catch_phrases.length;
-        },
-        pauseAnimation() {
-            this.settings.isPaused = true;
-            this.settings.isWritting = false;
-        },
-        resumeAnimantion() {
-            this.settings.isPaused = false;
-        },
-        startWritting() {
-            this.settings.isWritting = true;
-        },
-        addLetter() {
-            this.lineLength++;
-        },
-        removeLetter() {
-            this.lineLength--;
-        }
-
     }
 });
 

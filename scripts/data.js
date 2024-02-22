@@ -53,7 +53,7 @@ const skills_en =  {
 
 const banner_en = {
     title: "Hi 👋, I'm Pedro Dias",
-    catch_phrases: [
+    jobTitles: [
         "Full Stack Developer",
         "Cybersecurity Enthusiast",
         "AI and Blockchain Fan",
