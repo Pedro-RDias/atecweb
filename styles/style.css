@@ -53,21 +53,23 @@ ul {
 }
 
 #home {
-    background-color: rgba(0, 0, 0, 0.5);
+    background: url('https://pedro-rdias.github.io/atecweb/images/background.jpg') rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+    background-size: cover;
 }
 
-#home:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('https://pedro-rdias.github.io/atecweb/images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    z-index: -1;
-}
+/*#home:after {*/
+/*    content: '';*/
+/*    position: absolute;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-image: url('https://pedro-rdias.github.io/atecweb/images/background.jpg');*/
+/*    background-size: cover;*/
+/*    background-position: center;*/
+/*    z-index: -1;*/
+/*}*/
 
 .typing-courser {
     font-weight: 900;
