@@ -1,3 +1,4 @@
+const imgagesPath = "https://pedro-rdias.github.io/atecweb/images/";
 const skills = [
     {name: "JavaScript", img: "js", tags: ["frontend", "backend", "fullstack", "web", "programming language"]},
     {name: "TypeScript", img: "ts", tags: ["frontend", "backend", "fullstack", "web", "programming language"]},
@@ -63,7 +64,7 @@ const banner_en = {
         "AI and Blockchain Fan",
         "Fluent in JavaScript, Python, and Go",
     ],
-    img: "https://pedro-rdias.github.io/atecweb/images/profile.jpg",
+    img: `${imgagesPath}profile.jpg`,
     alt: "Profile Picture of Pedro Dias",
 };
 
@@ -86,38 +87,37 @@ const certification_en = {
             title: "Meta Fulll Satck Engineer",
             institution: "Coursera",
             date: "2023",
-            badge: "meta-full-stack-engineer-certificate",
+            badge: `${imgagesPath}badges/meta-full-stack-engineer-certificate.png`,
         },
         {
             title: "Google Cibersecurity Professional Certificate",
             institution: "Coursera",
             date: "2023",
-            badge: "google-cybersecurity-certificate",
+            badge: `${imgagesPath}badges/google-cybersecurity-certificate.png`,
         },
         {
             title: "Meta Generalist Software Engineer",
             institution: "Coursera",
             date: "2023",
-            badge: "meta-generalist-software-engineer-certificate",
+            badge: `${imgagesPath}badges/meta-generalist-software-engineer-certificate.png`,
         },
         {
             title: "Google IT Automation with Python Professional Certificate",
             institution: "Coursera",
             date: "2023",
-            badge: "google-it-automation-certificate",
-
+            badge: `${imgagesPath}badges/google-it-automation-certificate.png`,
         },
         {
             title: "Google Project Management Professional Certificate",
             institution: "Coursera",
             date: "2023",
-            badge: "google-project-management-certificate.2",
+            badge: `${imgagesPath}badges/google-project-management-certificate.2.png`,
         },
         {
             title: "Google Data Analytics Professional Certificate",
             institution: "Coursera",
             date: "2021",
-            badge: "google-data-analytics-certificate.2",
+            badge: `${imgagesPath}badges/google-data-analytics-certificate.2.png`,
         },
     ],
 };
@@ -160,15 +160,15 @@ const interests_en = {
     interests: [
         {
             title: "Cybersecurity",
-            icon: "https://pedro-rdias.github.io/atecweb/images/interests/cyber.svg",
+            icon: `${imgagesPath}interests/cyber.svg`,
         },
         {
             title: "AI and Machine Learning",
-            icon: "https://pedro-rdias.github.io/atecweb/images/interests/ai.svg",
+            icon: `${imgagesPath}interests/ai.svg`,
         },
         {
             title: "Web Development",
-            icon: "https://pedro-rdias.github.io/atecweb/images/interests/web.svg",
+            icon: `${imgagesPath}interests/web.svg`,
         },
     ]
 };
@@ -178,32 +178,30 @@ const hobbies_en = {
     hobbies: [
         {
             title: "Audiobooks",
-            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/audiobooks.svg",
+            icon: `${imgagesPath}hobbies/audiobooks.svg`,
         },
         {
             title: "Writing",
-            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/writing.svg",
+            icon: `${imgagesPath}hobbies/writing.svg`,
         },
         {
             title: "Music",
-            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/music.svg",
+            icon: `${imgagesPath}hobbies/music.svg`,
         },
         {
             title: "Traveling",
-            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/travel.svg",
+            icon: `${imgagesPath}hobbies/travel.svg`,
         },
         {
             title: "Cooking",
-            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/cooking.svg",
+            icon: `${imgagesPath}hobbies/cooking.svg`,
         },
         {
             title: "Hiking",
-            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/hiking.svg",
+            icon: `${imgagesPath}hobbies/hiking.svg`,
         }
     ]
 };
-
-
 
 const portfolio_en = {
     title: "Portfolio",
@@ -267,13 +265,13 @@ const contact_en = {
         {
             name: "GitHub",
             link: "",
-            icon: "github",
+            icon: `${imgagesPath}socials/github.svg`,
             message: "Check out my GitHub profile",
         },
         {
             name: "LinkedIn",
             link: "",
-            icon: "linkedin",
+            icon: `${imgagesPath}socials/linkedin.svg`,
             message: "Check out my LinkedIn profile",
         },
     ],
