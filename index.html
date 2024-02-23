@@ -227,22 +227,43 @@
 <template id="vue_contact">
     <section class="container page d-flex flex-column" id="contacts">
         <h2 class="page-title text-center">{{title}}</h2>
-        <div class="row flex-grow-1 pt-3 pt-sm-5 justify-content-center">
-<!--            <section class="col-12 col-md-4"></section>-->
-            <section class="col-12 col-md-8">
-                <h3 class="page-subtitle text-center pb-3">{{formTitle}}</h3>
-                <form class="row g-3 needs-validation">
-                    <div v-for="ff in formFields" class="col-12" :class="{ 'col-md-6': ff.size === 6 }">
-                        <label class="form-label" :for="ff.name">{{ff.label}}</label>
-                        <input v-if="ff.element === 'input'" class="form-control" :id="ff.name" :type="ff.type" :placeholder="ff.placeholder" required>
-                        <textarea v-if="ff.element === 'textarea'" class="form-control" :id="ff.name" :placeholder="ff.placeholder" required rows="5"></textarea>
-                        <div class="invalid-feedback">
-                            Please provide a valid city.
-                        </div>
+        <div class="flex-grow-1">
+            <div class="row g-5">
+                <section class="col-12 col-md-6">
+                    <div class="d-flex justify-content-evenly pt-5">
+                        <article :key="social.name" class="col-md-6 text-center" v-for="social in socials">
+                            <a target="_blank" :href="social.link" class="social-link">
+                                <img :alt="`${social.name} icon`" :src="social.icon" class="img-fluid social-icon">
+                                <p class="text-decoration-none">
+                                    {{social.name}}
+                                </p>
+                            </a>
+                            <p>
+
+
+                            </p>
+                        </article>
                     </div>
-                    <button class="btn btn-outline-info col-12 my-3 mx-2" type="submit">Submit form</button>
-                </form>
-            </section>
+                </section>
+                <section class="col-12 col-md-6">
+                    <h3 class="page-subtitle text-center pb-3">{{formTitle}}</h3>
+                    <form class="row g-3 needs-validation">
+                        <div :class="{ 'col-md-6': ff.size === 6 }" class="col-12" v-for="ff in formFields">
+                            <label :for="ff.name" class="form-label">{{ff.label}}</label>
+                            <input :id="ff.name" :placeholder="ff.placeholder" :type="ff.type" class="form-control"
+                                   required v-if="ff.element === 'input'">
+                            <textarea :id="ff.name" :placeholder="ff.placeholder" class="form-control"
+                                      required rows="5" v-if="ff.element === 'textarea'"></textarea>
+                            <div class="invalid-feedback">
+                                Please provide a valid city.
+                            </div>
+                        </div>
+                        <div class="col-12 my-3 d-flex">
+                            <button class="btn btn-outline-info flex-fill" type="submit">Submit form</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
         </div>
         <p class="text-center">© 2024 Pedro Ribeiro Dias</p>
     </section>

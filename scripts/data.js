@@ -264,13 +264,13 @@ const contact_en = {
     socials: [
         {
             name: "GitHub",
-            link: "",
+            link: "https://github.com/Pedro-RDias/",
             icon: `${imgagesPath}socials/github.svg`,
             message: "Check out my GitHub profile",
         },
         {
             name: "LinkedIn",
-            link: "",
+            link: "https://www.linkedin.com/in/pedroribeirodias/",
             icon: `${imgagesPath}socials/linkedin.svg`,
             message: "Check out my LinkedIn profile",
         },
@@ -305,7 +305,7 @@ const contact_en = {
             name: "message",
             type: "text",
             placeholder: "Message",
-            label: "What's your message?",
+            label: "What do you wish to tell me?",
             size: 12,
             element: "textarea",
         }
