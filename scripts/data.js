@@ -178,27 +178,27 @@ const hobbies_en = {
     hobbies: [
         {
             title: "Audiobooks",
-            icon: "audiobooks",
+            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/audiobooks.svg",
         },
         {
             title: "Writing",
-            icon: "writing",
+            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/writing.svg",
         },
         {
             title: "Music",
-            icon: "music",
+            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/music.svg",
         },
         {
             title: "Traveling",
-            icon: "travel",
+            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/travel.svg",
         },
         {
             title: "Cooking",
-            icon: "cooking",
+            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/cooking.svg",
         },
         {
             title: "Hiking",
-            icon: "hiking",
+            icon: "https://pedro-rdias.github.io/atecweb/images/hobbies/hiking.svg",
         }
     ]
 };
