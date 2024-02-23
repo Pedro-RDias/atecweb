@@ -63,7 +63,7 @@ const banner_en = {
         "AI and Blockchain Fan",
         "Fluent in JavaScript, Python, and Go",
     ],
-    img: "pedribei.jpg",
+    img: "https://pedro-rdias.github.io/atecweb/images/profile.jpg",
     alt: "Profile Picture of Pedro Dias",
 };
 
@@ -160,15 +160,15 @@ const interests_en = {
     interests: [
         {
             title: "Cybersecurity",
-            icon: "cyber",
+            icon: "https://pedro-rdias.github.io/atecweb/images/interests/cyber.svg",
         },
         {
             title: "AI and Machine Learning",
-            icon: "ai",
+            icon: "https://pedro-rdias.github.io/atecweb/images/interests/ai.svg",
         },
         {
             title: "Web Development",
-            icon: "web",
+            icon: "https://pedro-rdias.github.io/atecweb/images/interests/web.svg",
         },
     ]
 };
