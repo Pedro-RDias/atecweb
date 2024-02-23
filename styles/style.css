@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 :root {
-    --title-accent: #ffe69c;
+    --title-accent: #FBA834;
     --font-famaily-accent: 'VT323', monospace;
 }
 
@@ -20,7 +20,7 @@ ul {
 }
 
 .page-title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 500;
     color: var(--title-accent);
     font-family: var(--font-famaily-accent);
@@ -28,7 +28,7 @@ ul {
 }
 
 .page-subtitle {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 500;
     color: var(--title-accent);
     font-family: var(--font-famaily-accent);
@@ -94,7 +94,7 @@ ul {
 }
 
 .catch-phrase {
-    color: #ffe69c;
+    color: var(--title-accent);
     font-weight: 500;
     font-family: var(--font-famaily-accent);
     letter-spacing: 1px;
@@ -137,6 +137,15 @@ ul {
 .img-cert {
     max-height: 120px;
 }
+
+.progress-bar{
+    background-color: var(--title-accent);
+}
 /* .About Me */
 
 /* Contacts */
+
+.social-link img {
+    height: 100px;
+
+}

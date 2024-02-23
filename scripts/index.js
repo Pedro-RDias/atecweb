@@ -38,8 +38,14 @@ app.component('vnavbar', {
     computed: {
         backgroundStyle: {
             get() {
-                return this.showBackround.show ? 'navbar navbar-expand-lg bg-body-tertiary' : 'navbar navbar-expand-lg bg-body-transparent';
+                return this.showBackround.show ? 'border-bottom border-body bg-body-tertiary' : '';
             }
+        },
+        themeStyle: {
+            get() {
+                return this.showBackround.show ? '' : 'dark';
+            }
+
         }
     }
 });
