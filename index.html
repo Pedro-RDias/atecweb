@@ -30,7 +30,7 @@
     <!-- Navbar -->
     <nav :class="backgroundStyle" :data-bs-theme="themeStyle" class="navbar navbar-expand-lg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">{{title}}</a>
+            <a class="navbar-brand" href="#">{{info.title}}</a>
             <button aria-controls="offcanvasNavbar" aria-label="Toggle navigation" class="navbar-toggler"
                     data-bs-target="#offcanvasNavbar"
                     data-bs-toggle="offcanvas" type="button">
@@ -39,14 +39,22 @@
             <div aria-labelledby="offcanvasNavbarLabel" class="offcanvas offcanvas-end" id="offcanvasNavbar"
                  tabindex="-1">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{title}}</h5>
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{info.title}}</h5>
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
                 </div>
                 <div class="offcanvas-body">
                     <!-- Links -->
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {{info.languageDropdown.title}}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-md-start">
+                                <li v-for="l in info.languageDropdown.options"><button class="dropdown-item" @click="()=>language.changeLanguage(l.code)"><span v-if="l.code === language.current">🎯</span> {{l.name}}</button></li>
+                            </ul>
+                        </li>
                         <li aria-controls="offcanvasNavbar" class="nav-item mx-1" data-bs-dismiss="offcanvas"
-                            data-bs-target="#offcanvasNavbar" v-for="link in links">
+                            data-bs-target="#offcanvasNavbar" v-for="link in info.links">
                             <a :href="link.link" aria-current="page" class="nav-link active">{{link.name}}</a>
                         </li>
                     </ul>
@@ -62,20 +70,20 @@
         <div class="row flex-fill d-flex align-content-md-center align-content-start pt-5 pt-md-0">
             <!-- Profile Image -->
             <div class="col-12 col-md-6 my-md-auto">
-                <img :alt="alt" :src="img" class="img-fluid mx-auto profile-img">
+                <img :alt="info.alt" :src="info.img" class="img-fluid mx-auto profile-img">
             </div>
             <!-- Name and Small description -->
             <div class="col-12 col-md-6 text-center text-md-start d-flex flex-column justify-content-center flex-grow-1">
-                <h1 class="header-title"><span class="banner-emoji">{{emoji}}</span> {{title}}</h1>
+                <h1 class="header-title"><span class="banner-emoji">{{info.emoji}}</span> {{info.title}}</h1>
                 <div class="catch-phrases">
                     <strong>
-                        {{subtitle}}<span class="catch-phrase">{{line}}</span>
+                        {{info.subtitle}} <span class="catch-phrase">{{line}}</span>
                         <span class="typing-courser">|</span>
                     </strong>
                 </div>
                 <!-- Contact Me Button for mobile -->
                 <div class="mt-5 d-md-none">
-                    <a class="btn btn-lg btn-outline-warning" href="#contactme">{{contact_btn}}</a>
+                    <a class="btn btn-lg btn-outline-warning" href="#contactme">{{info.contact_btn}}</a>
                 </div>
             </div>
         </div>
@@ -86,10 +94,10 @@
 <template id="vue_about">
     <section class="container page pt-5" id="aboutme">
         <div class="row g-5">
-            <h2 class="col-12 text-center pt-5 page-title">{{title}}</h2>
+            <h2 class="col-12 text-center pt-5 page-title">{{info.title}}</h2>
             <div class="col-12 col-md-6">
                 <!-- About Me Text -->
-                <p class="about-text" v-for="line in description">{{line}}</p>
+                <p class="about-text" v-for="line in info.description">{{line}}</p>
                 <!-- Professional Formation -->
                 <div class="mt-5">
                     <certification_list></certification_list>
@@ -138,9 +146,9 @@
 <!-- Vue Component for the interests list -->
 <template id="vue_interests_list">
     <section class="container">
-        <h3 class="page-subtitle text-center mb-4">{{title}}</h3>
+        <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
         <ul class="row about-list g-2">
-            <li class="col-4 text-center py-2" v-for="int in interests">
+            <li class="col-4 text-center py-2" v-for="int in info.interests">
                 <img :alt="`Interest icon ${int.title}`" :src="int.icon" class="img-fluid hobbie-img">
                 <p class="m-0 pt-1">{{int.title}}</p>
             </li>
@@ -150,9 +158,9 @@
 <!-- Vue Component for the hobbies list -->
 <template id="vue_hobbies_list">
     <section class="container">
-        <h3 class="page-subtitle text-center mb-4">{{title}}</h3>
+        <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
         <ul class="row about-list g-2">
-            <li class="col-4 text-center py-2" v-for="hobbie in hobbies">
+            <li class="col-4 text-center py-2" v-for="hobbie in info.hobbies">
                 <img :alt="`Hobbie icon ${hobbie.title}`" :src="hobbie.icon" class="img-fluid hobbie-img">
                 <p class="m-0 pt-1">{{hobbie.title}}</p>
             </li>
@@ -162,12 +170,12 @@
 <!-- Vue Component for the skill list -->
 <template id="vue_skill_list">
     <section>
-        <h3 class="page-subtitle text-center mb-4">Skills</h3>
+        <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
         <!-- Skill Searchbar -->
         <div class="input-group input-group-lg mt-3 mb-4">
-            <label class="form-label mb-2" for="skill-searchbar">{{input_label}}</label>
+            <label class="form-label mb-2" for="skill-searchbar">{{info.input_label}}</label>
             <div class="input-group">
-                <input :placeholder="input_placeholder"
+                <input :placeholder="info.input_placeholder"
                        class="form-control form-control-lg"
                        id="skill-searchbar"
                        type="text"
@@ -188,9 +196,9 @@
 <!-- Vue Component for the language list -->
 <template id="vue_language_list">
     <section class="container">
-        <h3 class="page-subtitle text-center mb-4">{{title}}</h3>
+        <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
         <ul class="about-list">
-            <li class="py-2 py-md-3" v-for="language in languages">
+            <li class="py-2 py-md-3" v-for="language in info.languages">
                 <article class="px-3 mb-2">
                     <p class="m-0 pb-2 text-center text-md-start">{{language.name}}</p>
                     <div>
@@ -209,9 +217,9 @@
 <!-- Portfolio -->
 <template id="vue_portfolio">
     <section class="container pt-5 page" id="portfolio">
-        <h2 class="page-title text-center pt-5 pt-4">{{title}}</h2>
+        <h2 class="page-title text-center pt-5 pt-4">{{info.title}}</h2>
         <div class="row justify-content-center">
-            <div class="col-12 col-sm-6 col-lg-3 gy-3 gy-md-5 gx-0 gx-3 d-flex" v-for="proj in projects">
+            <div class="col-12 col-sm-6 col-lg-3 gy-3 gy-md-5 gx-0 gx-3 d-flex" v-for="proj in info.projects">
                 <article class="card border-2 border-warning-subtle">
                     <img :alt="`Image for ${proj.title} project`" :src="proj.img" class="card-img-top">
                     <div class="card-body d-flex flex-column">
@@ -225,10 +233,10 @@
                         <div class="d-flex justify-content-between">
                             <a :href="proj.linkProject" class="btn d-flex text-center btn-outline-warning"
                                target="_blank">
-                                {{linkProjectLabel}}
+                                {{info.linkProjectLabel}}
                             </a>
                             <a :href="proj.linkCode" class="btn d-flex text-center btn-outline-warning"
-                               target="_blank">{{linkCodeLabel}}
+                               target="_blank">{{info.linkCodeLabel}}
                             </a>
                         </div>
                     </div>
@@ -245,9 +253,9 @@
         <div class="row g-5">
             <!-- Social Links -->
             <section class="col-12 col-md-6">
-                <h3 class="page-subtitle text-center mb-4">{{title}}</h3>
+                <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
                 <div class="row justify-content-center">
-                    <article :key="social.name" class="col-md-6 p-1" v-for="social in socials">
+                    <article v-for="social in info.socials" :key="social.name" class="col-md-6 p-1 h-100">
                         <a :href="social.link"
                            class="social-link d-flex p-3 flex-column text-decoration-none text-center card border-2 border-warning-subtle" target="_blank">
                                 <span class="pb-3">
@@ -260,21 +268,21 @@
             </section>
             <!-- Contact Form-->
             <section class="col-12 col-md-6">
-                <h3 class="page-subtitle text-center mb-4">{{formTitle}}</h3>
+                <h3 class="page-subtitle text-center mb-4">{{info.formTitle}}</h3>
                 <form @submit="submitForm" class="row g-3 needs-validation">
-                    <div :class="{ 'col-md-6': ff.size === 6 }" class="col-12" v-for="ff in formFields">
+                    <div :class="{ 'col-md-6': ff.size === 6 }" class="col-12" v-for="ff in info.formFields">
                         <label :for="ff.name" class="form-label">{{ff.label}}</label>
                         <input :id="ff.name" :placeholder="ff.placeholder" :type="ff.type" class="form-control"
                                required v-if="ff.element === 'input'">
                         <textarea :id="ff.name" :placeholder="ff.placeholder" class="form-control"
                                   required rows="5" v-if="ff.element === 'textarea'"></textarea>
                         <div class="invalid-feedback">
-                            This field is required
+                            {{info.formInputError}}
                         </div>
                     </div>
                     <div class="col-12 my-3 d-flex">
                         <button @click="validateForm" class="btn btn-outline-warning flex-fill" type="submit">
-                            Submit form
+                            {{info.submitBtn}}
                         </button>
                     </div>
                 </form>
@@ -286,11 +294,11 @@
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
             <div aria-atomic="true" aria-live="assertive" class="toast" id="contact-toast" role="alert">
                 <div class="toast-header">
-                    🙏&nbsp;<strong class="me-auto">{{sucessMessage.title}}</strong>
+                    🙏&nbsp;<strong class="me-auto">{{info.sucessMessage.title}}</strong>
                     <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" type="button"></button>
                 </div>
                 <div class="toast-body">
-                    {{sucessMessage.message}}
+                    {{info.sucessMessage.message}}
                 </div>
             </div>
         </div>
@@ -301,6 +309,7 @@
 <!-- Scripts -->
 <script src="libraries/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="scripts/data.en.js"></script>
+<script src="scripts/data.pt.js"></script>
 <script src="scripts/index.js"></script>
 <!-- .Scripts -->
 </body>

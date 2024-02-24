@@ -48,11 +48,10 @@ const skills = [
     {name: "GitHub Actions", img: "githubactions", tags: ["CI/CD", "automation", "tool"]},
 ];
 
-const skills_en =  {
-    title : "Skills",
+const skills_en = {
+    title: "Skills",
     input_label: "You can search for more: ",
     input_placeholder: "Search for a language, framework, or tool",
-    skills: skills,
 };
 
 const banner_en = {
@@ -274,19 +273,19 @@ const contact_en = {
             name: "LinkedIn",
             link: "https://www.linkedin.com/in/pedroribeirodias/",
             icon: `${imgagesPath}socials/linkedin.svg`,
-            message: "You can connect with me on LinkedIn",
+            message: "Connect with me on LinkedIn",
         },
         {
             name: "GitHub",
             link: "https://github.com/Pedro-RDias/",
             icon: `${imgagesPath}socials/github.svg`,
-            message: "You can find my projects on GitHub",
+            message: "Find my projects on GitHub",
         },
         {
             name: "Dev",
             link: "https://dev.to/",
             icon: `${imgagesPath}socials/dev.svg`,
-            message: "You can read my articles on Dev",
+            message: "Read my articles on Dev",
         }
     ],
     formTitle: "Want to get in touch?",
@@ -328,6 +327,8 @@ const contact_en = {
             element: "textarea",
         }
     ],
+    formInputError: "Please fill out this field.",
+    submitBtn: "Send Message",
 };
 
 const navbar_en = {
@@ -353,6 +354,18 @@ const navbar_en = {
             name: "Resume",
             link: "#",
         }
-
     ],
+    languageDropdown: {
+        title: "Language",
+        options: [
+            {
+                name: "EN",
+                code: "en"
+            },
+            {
+                name: "PT",
+                code: "pt"
+            }
+        ]
+    }
 };

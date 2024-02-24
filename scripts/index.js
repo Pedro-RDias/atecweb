@@ -1,10 +1,17 @@
-const app = Vue.createApp({
-    data() {
-        return {
-            message: "Hello, Vue!",
+const language = Vue.reactive(
+    {
+        current: 'en',
+        available: ['en', 'pt'],
+        changeLanguage(lang) {
+            console.log(lang);
+            if (this.available.includes(lang) && lang !== this.current) {
+                this.current = lang;
+            }
         }
     }
-});
+)
+
+const app = Vue.createApp();
 
 // Header Components
 const navOffset = 50;
@@ -18,12 +25,8 @@ app.component('vnavbar', {
             }
         })
         return {
-            showBackround
-        }
-    },
-    data() {
-        return {
-            ...navbar_en
+            showBackround,
+            language
         }
     },
     created() {
@@ -33,11 +36,11 @@ app.component('vnavbar', {
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
-        handleScroll(event) {
+        handleScroll() {
             // Any code to be executed when the window is scrolled
             if (
                 window.scrollY > window.innerHeight - navOffset && !this.showBackround.show
-                || window.scrollY < window.innerHeight -navOffset && this.showBackround.show
+                || window.scrollY < window.innerHeight - navOffset && this.showBackround.show
             ) this.showBackround.toggleShow();
         }
     },
@@ -51,7 +54,17 @@ app.component('vnavbar', {
             get() {
                 return this.showBackround.show ? '' : 'dark';
             }
-
+        },
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return navbar_pt_pt;
+                    case 'en':
+                    default:
+                        return navbar_en;
+                }
+            }
         }
     }
 });
@@ -92,7 +105,7 @@ app.component('vbanner', {
         timeRef = setInterval(() => {
             if (this.phraseStore.isPaused) return;
             if (this.phraseStore.isWritting) {
-                if (this.phraseStore.lineLength < this.jobTitles[this.phraseStore.index].length) {
+                if (this.phraseStore.lineLength < this.info.jobTitles[this.phraseStore.index].length) {
                     this.phraseStore.addLetter();
                 } else {
                     this.phraseStore.stopWritting();
@@ -104,7 +117,7 @@ app.component('vbanner', {
                 if (this.phraseStore.lineLength > 0) {
                     this.phraseStore.removeLetter();
                 } else {
-                    this.phraseStore.startWritting(this.jobTitles.length);
+                    this.phraseStore.startWritting(this.info.jobTitles.length);
                 }
             }
 
@@ -112,26 +125,40 @@ app.component('vbanner', {
         }, 50);
         return () => clearInterval(timeRef);
     },
-    data() {
-        return {
-            ...banner_en
-        }
-    },
     computed: {
         line: {
             get() {
-                return this.jobTitles[this.phraseStore.index].slice(0, this.phraseStore.lineLength);
+                return this.info.jobTitles[this.phraseStore.index].slice(0, this.phraseStore.lineLength);
+            },
+        },
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return banner_pt_pt;
+                    case 'en':
+                    default:
+                        return banner_en;
+                }
             }
         }
     },
-    methods: {}
 });
 
 app.component('vabout', {
     template: '#vue_about',
-    data() {
-        return {
-            ...about_en
+    computed: {
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return about_pt_pt;
+                    case 'en':
+                    default:
+                        return about_en;
+                }
+
+            }
         }
     }
 });
@@ -157,18 +184,14 @@ app.component('certification_list', {
     }
 });
 
-
+// Components
 app.component('skill-list', {
     template: '#vue_skill_list',
     setup() {
         const skill_search = Vue.ref('');
         return {
-            skill_search
-        }
-    },
-    data() {
-        return {
-            ...skills_en,
+            skill_search,
+            language,
         }
     },
     computed: {
@@ -180,60 +203,113 @@ app.component('skill-list', {
                     else return skill.tags.some(keyword => keyword.toLowerCase().includes(this.skill_search.toLowerCase()));
                 });
 
-                return s.length > 0 ? s.slice(0,12) : this.skills.slice(0,12);
+                return s.length > 0 ? s.slice(0, 12) : this.skills.slice(0, 12);
             }
-        }
+        },
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return skills_pt_pt;
+                    case 'en':
+                    default:
+                        return skills_en;
+                }
+
+            }
+        },
 
     }
 });
 
 app.component('language_list', {
     template: '#vue_language_list',
-    data() {
-        return {
-            ...languages_en,
+    computed: {
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return languages_pt_pt;
+                    case 'en':
+                    default:
+                        return languages_en;
+                }
+            },
         }
-    }
+    },
 
-})
+});
 
 app.component('interests_list', {
     template: '#vue_interests_list',
-    data() {
-        return {
-            ...interests_en,
-        }
-    }
+    computed: {
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return interests_pt_pt;
+                    case 'en':
+                    default:
+                        return interests_en;
+                }
+            },
+        },
+    },
 });
 
 app.component('hobbies_list', {
     template: '#vue_hobbies_list',
-    data() {
-        return {
-            ...hobbies_en,
-        }
-    }
+    computed: {
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return hobbies_pt_pt;
+                    case 'en':
+                    default:
+                        return hobbies_en;
+                }
+            },
+        },
+    },
 });
 // .About Components
 
 app.component('vportfolio', {
     template: '#vue_portfolio',
-    data() {
-        return {
-            ...portfolio_en
+    computed: {
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return portfolio_pt_pt;
+                    case 'en':
+                    default:
+                        return portfolio_en;
+                }
+            },
         }
     }
 });
 
 app.component('vcontact', {
     template: '#vue_contact',
-    data() {
-        return {
-            ...contact_en
+    computed: {
+        info: {
+            get() {
+                switch (language.current) {
+                    case 'pt':
+                        return contact_pt_pt;
+                    case 'en':
+                    default:
+                        return contact_en;
+                }
+            },
+
         }
     },
     methods: {
-        validateForm(event) {
+        validateForm() {
             document.querySelectorAll('.needs-validation').forEach(form => form.classList.add('was-validated'));
         },
         submitForm(event) {
@@ -241,9 +317,9 @@ app.component('vcontact', {
             this.validateForm(event);
             if (event.target.checkValidity()) {
                 const form = event.target;
-                        document.querySelectorAll('.needs-validation').forEach(form => form.classList.remove('was-validated'));
-                        form.reset();
-                        bootstrap.Toast.getOrCreateInstance(document.getElementById('contact-toast')).show();
+                document.querySelectorAll('.needs-validation').forEach(form => form.classList.remove('was-validated'));
+                form.reset();
+                bootstrap.Toast.getOrCreateInstance(document.getElementById('contact-toast')).show();
             }
         },
     }
