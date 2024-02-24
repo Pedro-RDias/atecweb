@@ -1,4 +1,5 @@
-const imgagesPath = "https://pedro-rdias.github.io/atecweb/images/";
+// const imgagesPath = "https://pedro-rdias.github.io/atecweb/images/";
+const imgagesPath = "./images/";
 const skills = [
     {name: "JavaScript", img: "js", tags: ["frontend", "backend", "fullstack", "web", "programming language"]},
     {name: "TypeScript", img: "ts", tags: ["frontend", "backend", "fullstack", "web", "programming language"]},
@@ -66,6 +67,7 @@ const banner_en = {
     ],
     img: `${imgagesPath}profile.jpg`,
     alt: "Profile Picture of Pedro Dias",
+    contact_btn: "Contact Me",
 };
 
 const about_en = {
@@ -88,36 +90,42 @@ const certification_en = {
             institution: "Coursera",
             date: "2023",
             badge: `${imgagesPath}badges/meta-full-stack-engineer-certificate.png`,
+            link: "https://www.credly.com/badges/fbab9b0b-81e3-488e-ba67-5b2280341837/public_url",
         },
         {
             title: "Google Cibersecurity Professional Certificate",
             institution: "Coursera",
             date: "2023",
             badge: `${imgagesPath}badges/google-cybersecurity-certificate.png`,
+            link: "https://www.credly.com/badges/af6d0921-75a0-4209-b292-7e49cf9a75d8/public_url",
         },
         {
             title: "Meta Generalist Software Engineer",
             institution: "Coursera",
             date: "2023",
             badge: `${imgagesPath}badges/meta-generalist-software-engineer-certificate.png`,
+            link: "https://www.credly.com/badges/ea835e38-cc3e-4c61-8749-475a0d2ee3b9/public_url",
         },
         {
             title: "Google IT Automation with Python Professional Certificate",
             institution: "Coursera",
             date: "2023",
             badge: `${imgagesPath}badges/google-it-automation-certificate.png`,
+            link: "https://www.credly.com/badges/b4b1cdd1-c390-4114-bd0b-ddc3bd842063/public_url",
         },
         {
             title: "Google Project Management Professional Certificate",
             institution: "Coursera",
             date: "2023",
             badge: `${imgagesPath}badges/google-project-management-certificate.2.png`,
+            link: "https://www.credly.com/badges/a93ec355-0130-43b8-b37d-845b6041675a/public_url",
         },
         {
             title: "Google Data Analytics Professional Certificate",
             institution: "Coursera",
             date: "2021",
             badge: `${imgagesPath}badges/google-data-analytics-certificate.2.png`,
+            link: "https://www.credly.com/badges/5f1680a1-08be-4747-bc1b-9daf6c3bf8e7/public_url",
         },
     ],
 };
@@ -260,22 +268,32 @@ const portfolio_en = {
 }
 
 const contact_en = {
-    title: "Contacts",
+    title: "Where to find me?",
     socials: [
-        {
-            name: "GitHub",
-            link: "https://github.com/Pedro-RDias/",
-            icon: `${imgagesPath}socials/github.svg`,
-            message: "Check out my projects on GitHub",
-        },
         {
             name: "LinkedIn",
             link: "https://www.linkedin.com/in/pedroribeirodias/",
             icon: `${imgagesPath}socials/linkedin.svg`,
-            message: "Connect with me on LinkedIn",
+            message: "You can connect with me on LinkedIn",
         },
+        {
+            name: "GitHub",
+            link: "https://github.com/Pedro-RDias/",
+            icon: `${imgagesPath}socials/github.svg`,
+            message: "You can find my projects on GitHub",
+        },
+        {
+            name: "Dev",
+            link: "https://dev.to/",
+            icon: `${imgagesPath}socials/dev.svg`,
+            message: "You can read my articles on Dev",
+        }
     ],
-    formTitle: "Get in touch",
+    formTitle: "Want to get in touch?",
+    sucessMessage: {
+        title: "Message Sent",
+        message: "Thank you for reaching out to me. I will get back to you as soon as possible."
+    },
     formFields: [
         {
             name: "firstName",
@@ -310,4 +328,31 @@ const contact_en = {
             element: "textarea",
         }
     ],
-}
+};
+
+const navbar_en = {
+    title: "Pedro Ribeiro Dias",
+    links: [
+        {
+            name: "Home",
+            link: "#home",
+        },
+        {
+            name: "About",
+            link: "#aboutme",
+        },
+        {
+            name: "Portfolio",
+            link: "#portfolio",
+        },
+        {
+            name: "Contact",
+            link: "#contactme",
+        },
+        {
+            name: "Resume",
+            link: "#",
+        }
+
+    ],
+};

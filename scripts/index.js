@@ -7,17 +7,23 @@ const app = Vue.createApp({
 });
 
 // Header Components
+const navOffset = 50;
 app.component('vnavbar', {
     template: '#vue_navbar',
     setup() {
         const showBackround = Vue.reactive({
             show: false,
             toggleShow() {
-                this.show = window.scrollY > window.innerHeight;
+                this.show = window.scrollY >= window.innerHeight - navOffset;
             }
         })
         return {
             showBackround
+        }
+    },
+    data() {
+        return {
+            ...navbar_en
         }
     },
     created() {
@@ -30,8 +36,8 @@ app.component('vnavbar', {
         handleScroll(event) {
             // Any code to be executed when the window is scrolled
             if (
-                window.scrollY > window.innerHeight && !this.showBackround.show
-                || window.scrollY < window.innerHeight && this.showBackround.show
+                window.scrollY > window.innerHeight - navOffset && !this.showBackround.show
+                || window.scrollY < window.innerHeight -navOffset && this.showBackround.show
             ) this.showBackround.toggleShow();
         }
     },
@@ -225,14 +231,26 @@ app.component('vcontact', {
         return {
             ...contact_en
         }
+    },
+    methods: {
+        validateForm(event) {
+            document.querySelectorAll('.needs-validation').forEach(form => form.classList.add('was-validated'));
+        },
+        submitForm(event) {
+            event.preventDefault();
+            this.validateForm(event);
+            if (event.target.checkValidity()) {
+                const form = event.target;
+                        document.querySelectorAll('.needs-validation').forEach(form => form.classList.remove('was-validated'));
+                        form.reset();
+                        bootstrap.Toast.getOrCreateInstance(document.getElementById('contact-toast')).show();
+            }
+        },
     }
 });
 
-
 app.mount('#app')
 
-
+// Enable Bootstrap Tooltip
 const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
 const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
