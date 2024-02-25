@@ -97,13 +97,13 @@
         <div class="row flex-fill d-flex align-content-md-center align-content-start pt-5 pt-md-0">
           <!-- Profile Image -->
           <div class="col-12 col-md-6 my-md-auto">
-            <img :alt="info.alt" :src="info.img" class="img-fluid mx-auto profile-img" />
+            <img :alt="info.alt" :src="info.img" class="img-fluid mx-auto profile-img shadow-lg" />
           </div>
           <!-- Name and Small description -->
           <div class="col-12 col-md-6 text-center text-md-start d-flex flex-column justify-content-center flex-grow-1">
             <h1 class="header-title"><span class="banner-emoji">{{info.emoji}}</span> {{info.title}}</h1>
             <div class="catch-phrases">
-              <strong>
+              <span class="fw-bold fs-4">
                 {{info.subtitle}} <span class="catch-phrase">{{line}}</span>
                 <span class="typing-courser">|</span>
               </strong>
