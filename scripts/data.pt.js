@@ -685,7 +685,7 @@ const timeline_pt_pt = [
       {
         type: 'certification',
         title: 'CS50 Programação Web com Python e JavaScript',
-        link: 'https://certificates.cs50.io/5e3f7b0d-3f5f-4b3d-8e1e-6f3c3b6a6e8d.png?size=letter',
+        link: 'https://certificates.cs50.io/7155bca1-7aff-4d98-912d-14ec75171685.png?size=letter',
         completionDate: new Date('2020-12-31'),
         description: [
           "CS50's Web Programming with Python and JavaScript é uma introdução a programação web, incluindo HTML, CSS, JavaScript, Python, SQL, Django, e Flask.",
