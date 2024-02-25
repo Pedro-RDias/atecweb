@@ -1,7 +1,7 @@
 // const imgagesPath = 'https://pedro-rdias.github.io/atecweb/images/';
 // const urlPath = 'https://pedro-rdias.github.io/atecweb/';
-const imgagesPath = "./images/";
-const urlPath = "/";
+const imgagesPath = './images/';
+const urlPath = '/';
 
 const skills = [
   { name: 'JavaScript', img: 'js', tags: ['frontend', 'backend', 'fullstack', 'web', 'programming language'] },
