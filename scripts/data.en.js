@@ -289,6 +289,12 @@ const contact_en = {
             link: "https://dev.to/",
             icon: `${imgagesPath}socials/dev.svg`,
             message: "Read my articles on Dev",
+        },
+        {
+            name: "email",
+            link: "mailto:Pedro.Dias.T0098247@edu.atec.pt",
+            icon: `${imgagesPath}socials/email.svg`,
+            message: "Envia-me um email",
         }
     ],
     formTitle: "Want to get in touch?",

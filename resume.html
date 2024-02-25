@@ -130,6 +130,9 @@
                 <h6 class="card-subtitle mb-2 text-body-secondary">{{ dateRange }}</h6>
                 <div :id="`collapse_${linkid}`" class="collapse mt-1">
                     <p class="m-0" v-for="p in item.description">{{p}}</p>
+                    <p class="pt-2 pb-3">
+                        <span class="badge text-bg-secondary mx-1" v-for="tag in item.stack">{{tag}}</span>
+                    </p>
                     <a v-if="item.link" :href="item.link" @click.stop class="btn btn-outline-warning d-block mt-2"
                        target="_blank">{{info.viewMoreLabel}}</a>
                 </div>
