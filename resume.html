@@ -97,10 +97,7 @@
     <!-- Main -->
     <!-- Timeline Banner -->
     <template id="vue_resume_banner">
-      <section
-        class="container-fluid d-flex flex-column page justify-content-center mt-5"
-        id="resume_banner"
-      >
+      <section class="container-fluid d-flex flex-column page justify-content-center mt-5" id="resume_banner">
         <div class="d-flex flex-column pt-5 pb-2">
           <h1 class="page-title text-center">{{info.subtitle}}</h1>
         </div>
@@ -172,8 +169,7 @@
         <div
           :id="linkid"
           @click="()=>toogleCollapse(`collapse_${linkid}`)"
-          class="card border-2 border-warning-subtle timeline-item flex-grow-1"
-        >
+          class="card border-2 border-warning-subtle timeline-item flex-grow-1">
           <div class="card-body">
             <h5 class="card-title">
               {{item.title}}<em class="fst-italic" v-if="item.institution">&nbsp;- {{item.institution}}</em>
@@ -190,8 +186,9 @@
                 @click.stop
                 class="btn btn-outline-warning d-block mt-2"
                 target="_blank"
-                >{{info.viewMoreLabel}}</a
               >
+                {{info.viewMoreLabel}}
+              </a>
             </div>
           </div>
         </div>
