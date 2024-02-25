@@ -1,275 +1,276 @@
 <!DOCTYPE html>
 <html data-bs-theme="dark" lang="en">
-  <head>
-    <meta charset="UTF-8" />
+<head>
+    <meta charset="UTF-8"/>
     <meta
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-      name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
     />
-    <meta content="ie=edge" http-equiv="X-UA-Compatible" />
+    <meta content="ie=edge" http-equiv="X-UA-Compatible"/>
     <title>Pedro Ribeiro Dias</title>
     <script src="./libraries/vue/vue.global.js"></script>
-    <link href="./libraries/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="./styles/style.css" rel="stylesheet" />
-  </head>
+    <link href="./libraries/bootstrap/css/bootstrap.css" rel="stylesheet"/>
+    <link href="./styles/style.css" rel="stylesheet"/>
+</head>
 
-  <body>
-    <div id="app">
-      <header class="fixed-top">
+<body>
+<div id="app">
+    <header class="fixed-top">
         <vnavbar></vnavbar>
-      </header>
-      <main>
+    </header>
+    <main>
         <vresumebanner></vresumebanner>
         <vtimeline></vtimeline>
-      </main>
-      <footer class="mt-5 border-1 border-top border-warning-subtle">
+    </main>
+    <footer class="mt-5 border-1 border-top border-warning-subtle">
         <vcontact></vcontact>
-      </footer>
-    </div>
+    </footer>
+</div>
 
-    <!-- Header Components -->
-    <template id="vue_navbar">
-      <!-- Navbar -->
-      <nav
-        :class="backgroundStyle"
-        :data-bs-theme="themeStyle"
-        class="navbar navbar-expand-lg border-bottom border-body bg-body-tertiary"
-      >
+<!-- Header Components -->
+<template id="vue_navbar">
+    <!-- Navbar -->
+    <nav
+            :class="backgroundStyle"
+            :data-bs-theme="themeStyle"
+            class="navbar navbar-expand-lg border-bottom border-body bg-body-tertiary"
+    >
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">{{info.title}}</a>
-          <button
-            aria-controls="offcanvasNavbar"
-            aria-label="Toggle navigation"
-            class="navbar-toggler"
-            data-bs-target="#offcanvasNavbar"
-            data-bs-toggle="offcanvas"
-            type="button"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div
-            aria-labelledby="offcanvasNavbarLabel"
-            class="offcanvas offcanvas-end"
-            id="offcanvasNavbar"
-            tabindex="-1"
-          >
-            <div class="offcanvas-header">
-              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{info.title}}</h5>
-              <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+            <a class="navbar-brand" href="#">{{info.title}}</a>
+            <button
+                    aria-controls="offcanvasNavbar"
+                    aria-label="Toggle navigation"
+                    class="navbar-toggler"
+                    data-bs-target="#offcanvasNavbar"
+                    data-bs-toggle="offcanvas"
+                    type="button"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div
+                    aria-labelledby="offcanvasNavbarLabel"
+                    class="offcanvas offcanvas-end"
+                    id="offcanvasNavbar"
+                    tabindex="-1"
+            >
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">{{info.title}}</h5>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="offcanvas" type="button"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <!-- Links -->
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                        <li class="nav-item dropdown">
+                            <a
+                                    aria-expanded="false"
+                                    class="nav-link dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    href="#"
+                                    role="button"
+                            >
+                                {{info.languageDropdown.title}}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-md-start">
+                                <li v-for="l in info.languageDropdown.options">
+                                    <button @click="()=>language.changeLanguage(l.code)" class="dropdown-item">
+                                        <span v-if="l.code === language.current">🎯</span> {{l.name}}
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                        <li
+                                aria-controls="offcanvasNavbar"
+                                class="nav-item mx-1"
+                                data-bs-dismiss="offcanvas"
+                                data-bs-target="#offcanvasNavbar"
+                                v-for="link in info.links"
+                        >
+                            <a :href="link.link" aria-current="page" class="nav-link active">{{link.name}}</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="offcanvas-body">
-              <!-- Links -->
-              <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                <li class="nav-item dropdown">
-                  <a
-                    aria-expanded="false"
-                    class="nav-link dropdown-toggle"
-                    data-bs-toggle="dropdown"
-                    href="#"
-                    role="button"
-                  >
-                    {{info.languageDropdown.title}}
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-md-start">
-                    <li v-for="l in info.languageDropdown.options">
-                      <button @click="()=>language.changeLanguage(l.code)" class="dropdown-item">
-                        <span v-if="l.code === language.current">🎯</span> {{l.name}}
-                      </button>
-                    </li>
-                  </ul>
-                </li>
-                <li
-                  aria-controls="offcanvasNavbar"
-                  class="nav-item mx-1"
-                  data-bs-dismiss="offcanvas"
-                  data-bs-target="#offcanvasNavbar"
-                  v-for="link in info.links"
-                >
-                  <a :href="link.link" aria-current="page" class="nav-link active">{{link.name}}</a>
-                </li>
-              </ul>
-            </div>
-          </div>
         </div>
-      </nav>
-    </template>
+    </nav>
+</template>
 
-    <!-- Main -->
-    <!-- Timeline Banner -->
-    <template id="vue_resume_banner">
-      <section class="container-fluid d-flex flex-column page justify-content-center mt-5" id="resume_banner">
+<!-- Main -->
+<!-- Timeline Banner -->
+<template id="vue_resume_banner">
+    <section class="container-fluid d-flex flex-column page justify-content-center mt-5" id="resume_banner">
         <div class="d-flex flex-column pt-5 pb-2">
-          <h1 class="page-title text-center">{{info.subtitle}}</h1>
+            <h1 class="page-title text-center">{{info.subtitle}}</h1>
         </div>
-      </section>
-    </template>
+    </section>
+</template>
 
-    <!-- Timeline -->
-    <template id="vue_timeline">
-      <section class="container py-5">
+<!-- Timeline -->
+<template id="vue_timeline">
+    <section class="container py-5">
         <div class="row">
-          <div class="col-1"></div>
-          <div class="col-11">
-            <div class="row d-none d-md-flex pb-3">
-              <div class="col-4"><h2 class="page-subtitle text-center">{{labels.workSubtitle}}</h2></div>
-              <div class="col-4"><h2 class="page-subtitle text-center">{{labels.educationSubtitle}}</h2></div>
-              <div class="col-4"><h2 class="page-subtitle text-center">{{labels.certificationSubtitle}}</h2></div>
+            <div class="col-1"></div>
+            <div class="col-11">
+                <div class="row d-none d-md-flex pb-3">
+                    <div class="col-4"><h2 class="page-subtitle text-center">{{labels.workSubtitle}}</h2></div>
+                    <div class="col-4"><h2 class="page-subtitle text-center">{{labels.educationSubtitle}}</h2></div>
+                    <div class="col-4"><h2 class="page-subtitle text-center">{{labels.certificationSubtitle}}</h2></div>
+                </div>
             </div>
-          </div>
         </div>
 
         <div class="row" v-for="y in info">
-          <div class="col-1 d-flex flex-column justify-content-center py-x">
-            <span class="d-inline-block display-4 year-label"> {{y.year}} </span>
-          </div>
-          <div class="col-11">
-            <div class="row">
-              <div class="col-12 col-md-4 d-flex flex-column">
-                <div class="flex-grow-1 p-2 d-flex d-none d-md-flex" v-for="py in getExperienceLinks(y.year)">
-                  <div class="card border-2 border-warning-subtle flex-grow-1 opacity-25">
-                    <div class="card-body">
-                      <h5 class="card-title">
-                        {{py.title}}<em class="fst-italic" v-if="py.institution">&nbsp;- {{py.institution}}</em>
-                      </h5>
-                      <h6 class="card-subtitle mb-2 text-body-secondary">
-                        <em class="fst-italic"> {{ labels.seeAboveLabel }} </em>
-                      </h6>
+            <div class="col-1 d-flex flex-column justify-content-center py-x">
+                <span class="d-inline-block display-4 year-label"> {{y.year}} </span>
+            </div>
+            <div class="col-11">
+                <div class="row">
+                    <div class="col-12 col-md-4 d-flex flex-column">
+                        <div class="flex-grow-1 p-2 d-flex d-none d-md-flex" v-for="py in getExperienceLinks(y.year)">
+                            <div class="card border-2 border-warning-subtle flex-grow-1 opacity-25">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        {{py.title}}<em class="fst-italic" v-if="py.institution">&nbsp;-
+                                        {{py.institution}}</em>
+                                    </h5>
+                                    <h6 class="card-subtitle mb-2 text-body-secondary">
+                                        <em class="fst-italic"> {{ labels.seeAboveLabel }} </em>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                        <vcolapse
+                                :item="p"
+                                :linkid="p.id"
+                                v-for="(p, i) in y.items.filter(x=> x.type === 'professional')"
+                        ></vcolapse>
                     </div>
-                  </div>
+                    <div class="col-12 col-md-4 d-flex flex-column">
+                        <vcolapse
+                                :item="p"
+                                :linkid="`edu_${y.year}_${i}`"
+                                v-for="(p, i) in y.items.filter(x=> x.type === 'education')"
+                        ></vcolapse>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <vcolapse
+                                :item="p"
+                                :linkid="`cert_${y.year}_${i}`"
+                                v-for="(p, i) in y.items.filter(x=> x.type === 'certification')"
+                        ></vcolapse>
+                    </div>
                 </div>
-                <vcolapse
-                  :item="p"
-                  :linkid="p.id"
-                  v-for="(p, i) in y.items.filter(x=> x.type === 'professional')"
-                ></vcolapse>
-              </div>
-              <div class="col-12 col-md-4 d-flex flex-column">
-                <vcolapse
-                  :item="p"
-                  :linkid="`edu_${y.year}_${i}`"
-                  v-for="(p, i) in y.items.filter(x=> x.type === 'education')"
-                ></vcolapse>
-              </div>
-              <div class="col-12 col-md-4">
-                <vcolapse
-                  :item="p"
-                  :linkid="`cert_${y.year}_${i}`"
-                  v-for="(p, i) in y.items.filter(x=> x.type === 'certification')"
-                ></vcolapse>
-              </div>
             </div>
-          </div>
         </div>
-      </section>
-    </template>
+    </section>
+</template>
 
-    <!-- Timeline Item -->
-    <template id="vue_colapse">
-      <div class="flex-grow-1 p-2 d-flex">
+<!-- Timeline Item -->
+<template id="vue_colapse">
+    <div class="flex-grow-1 p-2 d-flex">
         <div
-          :id="linkid"
-          @click="()=>toogleCollapse(`collapse_${linkid}`)"
-          class="card border-2 border-warning-subtle timeline-item flex-grow-1">
-          <div class="card-body">
-            <h5 class="card-title">
-              {{item.title}}<em class="fst-italic" v-if="item.institution">&nbsp;- {{item.institution}}</em>
-            </h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary fst-italic">{{ dateRange }}</h6>
-            <div :id="`collapse_${linkid}`" class="collapse mt-1">
-              <p class="m-0" v-for="p in item.description">{{p}}</p>
-              <p class="pt-2 pb-3">
-                <span class="badge text-bg-secondary mx-1" v-for="tag in item.stack">{{tag}}</span>
-              </p>
-              <a
-                v-if="item.link"
-                :href="item.link"
-                @click.stop
-                class="btn btn-outline-warning d-block mt-2"
-                target="_blank"
-              >
-                {{info.viewMoreLabel}}
-              </a>
+                :id="linkid"
+                @click="()=>toogleCollapse(`collapse_${linkid}`)"
+                class="card border-2 border-warning-subtle timeline-item flex-grow-1">
+            <div class="card-body">
+                <h5 class="card-title">
+                    {{item.title}}<em class="fst-italic" v-if="item.institution">&nbsp;- {{item.institution}}</em>
+                </h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary fst-italic">{{ dateRange }}</h6>
+                <div :id="`collapse_${linkid}`" class="collapse mt-1">
+                    <p class="m-0" v-for="p in item.description">{{p}}</p>
+                    <p class="pt-2 pb-3">
+                        <span class="badge text-bg-secondary mx-1" v-for="tag in item.stack">{{tag}}</span>
+                    </p>
+                    <a
+                            :href="item.link"
+                            @click.stop
+                            class="btn btn-outline-warning d-block mt-2"
+                            target="_blank"
+                            v-if="item.link"
+                    >
+                        {{info.viewMoreLabel}}
+                    </a>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-    </template>
+    </div>
+</template>
 
-    <!-- .Main -->
+<!-- .Main -->
 
-    <!-- Contact -->
-    <template id="vue_contact">
-      <section class="container pt-5 d-flex flex-column page" id="contactme">
+<!-- Contact -->
+<template id="vue_contact">
+    <section class="container pt-5 d-flex flex-column page" id="contactme">
         <div class="row g-5">
-          <!-- Social Links -->
-          <section class="col-12 col-md-6">
-            <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
-            <div class="row justify-content-center">
-              <article :key="social.name" class="col-md-6 p-1 h-100" v-for="social in info.socials">
-                <a
-                  :href="social.link"
-                  class="social-link d-flex p-3 flex-column text-decoration-none text-center card border-2 border-warning-subtle"
-                  target="_blank"
-                >
-                  <span class="pb-3"> {{social.message}} </span>
-                  <img :alt="`${social.name} social icon`" :src="social.icon" class="img-fluid social-icon" />
-                </a>
-              </article>
-            </div>
-          </section>
-          <!-- Contact Form-->
-          <section class="col-12 col-md-6">
-            <h3 class="page-subtitle text-center mb-4">{{info.formTitle}}</h3>
-            <form @submit="submitForm" class="row g-3 needs-validation">
-              <div :class="{ 'col-md-6': ff.size === 6 }" class="col-12" v-for="ff in info.formFields">
-                <label :for="ff.name" class="form-label">{{ff.label}}</label>
-                <input
-                  :id="ff.name"
-                  :placeholder="ff.placeholder"
-                  :type="ff.type"
-                  class="form-control"
-                  required
-                  v-if="ff.element === 'input'"
-                />
-                <textarea
-                  :id="ff.name"
-                  :placeholder="ff.placeholder"
-                  class="form-control"
-                  required
-                  rows="5"
-                  v-if="ff.element === 'textarea'"
-                ></textarea>
-                <div class="invalid-feedback">{{info.formInputError}}</div>
-              </div>
-              <div class="col-12 my-4 d-flex">
-                <button @click="validateForm" class="btn btn-outline-warning flex-fill" type="submit">
-                  {{info.submitBtn}}
-                </button>
-              </div>
-            </form>
-          </section>
+            <!-- Social Links -->
+            <section class="col-12 col-md-6">
+                <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
+                <div class="row justify-content-center">
+                    <article :key="social.name" class="col-md-6 p-1 h-100" v-for="social in info.socials">
+                        <a
+                                :href="social.link"
+                                class="social-link d-flex p-3 flex-column text-decoration-none text-center card border-2 border-warning-subtle"
+                                target="_blank"
+                        >
+                            <span class="pb-3"> {{social.message}} </span>
+                            <img :alt="`${social.name} social icon`" :src="social.icon" class="img-fluid social-icon"/>
+                        </a>
+                    </article>
+                </div>
+            </section>
+            <!-- Contact Form-->
+            <section class="col-12 col-md-6">
+                <h3 class="page-subtitle text-center mb-4">{{info.formTitle}}</h3>
+                <form @submit="submitForm" class="row g-3 needs-validation">
+                    <div :class="{ 'col-md-6': ff.size === 6 }" class="col-12" v-for="ff in info.formFields">
+                        <label :for="ff.name" class="form-label">{{ff.label}}</label>
+                        <input
+                                :id="ff.name"
+                                :placeholder="ff.placeholder"
+                                :type="ff.type"
+                                class="form-control"
+                                required
+                                v-if="ff.element === 'input'"
+                        />
+                        <textarea
+                                :id="ff.name"
+                                :placeholder="ff.placeholder"
+                                class="form-control"
+                                required
+                                rows="5"
+                                v-if="ff.element === 'textarea'"
+                        ></textarea>
+                        <div class="invalid-feedback">{{info.formInputError}}</div>
+                    </div>
+                    <div class="col-12 my-4 d-flex">
+                        <button @click="validateForm" class="btn btn-outline-warning flex-fill" type="submit">
+                            {{info.submitBtn}}
+                        </button>
+                    </div>
+                </form>
+            </section>
         </div>
         <p class="text-center mt-5">© 2024 Pedro Ribeiro Dias</p>
 
         <!-- Toast Message -->
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
-          <div aria-atomic="true" aria-live="assertive" class="toast" id="contact-toast" role="alert">
-            <div class="toast-header">
-              🙏&nbsp;<strong class="me-auto">{{info.sucessMessage.title}}</strong>
-              <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" type="button"></button>
+            <div aria-atomic="true" aria-live="assertive" class="toast" id="contact-toast" role="alert">
+                <div class="toast-header">
+                    🙏&nbsp;<strong class="me-auto">{{info.sucessMessage.title}}</strong>
+                    <button aria-label="Close" class="btn-close" data-bs-dismiss="toast" type="button"></button>
+                </div>
+                <div class="toast-body">{{info.sucessMessage.message}}</div>
             </div>
-            <div class="toast-body">{{info.sucessMessage.message}}</div>
-          </div>
         </div>
-      </section>
-    </template>
-    <!-- .Contact -->
+    </section>
+</template>
+<!-- .Contact -->
 
-    <!-- Scripts -->
-    <script src="libraries/bootstrap/js/bootstrap.bundle.js"></script>
-    <script src="scripts/data.en.js"></script>
-    <script src="scripts/data.pt.js"></script>
-    <script src="scripts/index.js"></script>
-    <!-- .Scripts -->
-  </body>
+<!-- Scripts -->
+<script src="libraries/bootstrap/js/bootstrap.bundle.js"></script>
+<script src="scripts/data.en.js"></script>
+<script src="scripts/data.pt.js"></script>
+<script src="scripts/index.js"></script>
+<!-- .Scripts -->
+</body>
 </html>
