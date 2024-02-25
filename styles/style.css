@@ -163,13 +163,6 @@
     Resume
 */
 
-#resume_banner {
-    background: url('../images/background-resume.jpg') rgba(0, 0, 0, 0.5);
-    background-blend-mode: overlay;
-    background-size: cover;
-    min-height: 70vh;
-}
-
 .year-label {
     color: var(--title-accent);
     font-family: var(--font-famaily-accent);

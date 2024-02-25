@@ -28,7 +28,7 @@
 <!-- Header Components -->
 <template id="vue_navbar">
     <!-- Navbar -->
-    <nav :class="backgroundStyle" :data-bs-theme="themeStyle" class="navbar navbar-expand-lg">
+    <nav :class="backgroundStyle" :data-bs-theme="themeStyle" class="navbar navbar-expand-lg border-bottom border-body bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">{{info.title}}</a>
             <button aria-controls="offcanvasNavbar" aria-label="Toggle navigation" class="navbar-toggler"
@@ -71,10 +71,9 @@
 
 <!-- Main -->
 <template id="vue_resume_banner">
-    <section class="container-fluid d-flex flex-column page justify-content-center" id="resume_banner">
-        <div>
-            <h1 class="title text-center">{{info.title}}</h1>
-            <p class="page-title text-center">{{info.subtitle}}</p>
+    <section class="container-fluid d-flex flex-column page justify-content-center mt-5 border-md-1 border-bottom border-warning-subtle" id="resume_banner">
+        <div class="d-flex flex-column pt-5 pb-2">
+            <h1 class="page-title text-center">{{info.subtitle}}</h1>
         </div>
     </section>
 </template>
@@ -93,8 +92,8 @@
                         <div class="flex-grow-1 p-2 d-flex d-none d-md-flex" v-for="py in getExperienceLinks(y.year)">
                             <div class="card border-2 border-warning-subtle flex-grow-1">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{py.title}}<span
-                                            v-if="py.institution">&nbsp;- {{py.institution}}</span></h5>
+                                    <h5 class="card-title">{{py.title}}<em class="fst-italic"
+                                            v-if="py.institution">&nbsp;- {{py.institution}}</em></h5>
                                     <h6 class="card-subtitle mb-2 text-body-secondary"><em class="fst-italic">{{ labels.seeAboveLabel }}</em></h6>
                                 </div>
                             </div>
@@ -125,9 +124,9 @@
         <div :id="linkid" @click="()=>toogleCollapse(`collapse_${linkid}`)"
              class="card border-2 border-warning-subtle timeline-item flex-grow-1">
             <div class="card-body">
-                <h5 class="card-title">{{item.title}}<span
-                        v-if="item.institution">&nbsp;- {{item.institution}}</span></h5>
-                <h6 class="card-subtitle mb-2 text-body-secondary">{{ dateRange }}</h6>
+                <h5 class="card-title">{{item.title}}<em class="fst-italic"
+                        v-if="item.institution">&nbsp;- {{item.institution}}</em></h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary fst-italic">{{ dateRange }}</h6>
                 <div :id="`collapse_${linkid}`" class="collapse mt-1">
                     <p class="m-0" v-for="p in item.description">{{p}}</p>
                     <p class="pt-2 pb-3">
