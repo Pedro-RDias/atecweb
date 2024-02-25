@@ -44,12 +44,12 @@
                 </div>
                 <div class="offcanvas-body">
                     <!-- Links -->
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 list-unstyled">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{info.languageDropdown.title}}
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-md-start">
+                            <ul class="dropdown-menu dropdown-menu-md-start list-unstyled">
                                 <li v-for="l in info.languageDropdown.options"><button class="dropdown-item" @click="()=>language.changeLanguage(l.code)"><span v-if="l.code === language.current">🎯</span> {{l.name}}</button></li>
                             </ul>
                         </li>
@@ -147,7 +147,7 @@
 <template id="vue_interests_list">
     <section class="container">
         <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
-        <ul class="row about-list g-2">
+        <ul class="row about-list g-2 list-unstyled">
             <li class="col-4 text-center py-2" v-for="int in info.interests">
                 <img :alt="`Interest icon ${int.title}`" :src="int.icon" class="img-fluid hobbie-img">
                 <p class="m-0 pt-1">{{int.title}}</p>
@@ -159,7 +159,7 @@
 <template id="vue_hobbies_list">
     <section class="container">
         <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
-        <ul class="row about-list g-2">
+        <ul class="row about-list g-2 list-unstyled">
             <li class="col-4 text-center py-2" v-for="hobbie in info.hobbies">
                 <img :alt="`Hobbie icon ${hobbie.title}`" :src="hobbie.icon" class="img-fluid hobbie-img">
                 <p class="m-0 pt-1">{{hobbie.title}}</p>
@@ -183,7 +183,7 @@
             </div>
         </div>
         <!-- Skill List -->
-        <ul class="row about-list g-3" id="skills">
+        <ul class="row about-list g-3 list-unstyled" id="skills">
             <li class="col-4 col-md-3 py-2" v-for="skill in filteredSkills">
                 <article class="text-center">
                     <img :alt='`Skill Icon ${skill.name}`' :src='`https://skillicons.dev/icons?i=${skill.img}`' class="img-fluid">
@@ -197,7 +197,7 @@
 <template id="vue_language_list">
     <section class="container">
         <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
-        <ul class="about-list">
+        <ul class="about-list list-unstyled">
             <li class="py-2 py-md-3" v-for="language in info.languages">
                 <article class="px-3 mb-2">
                     <p class="m-0 pb-2 text-center text-md-start">{{language.name}}</p>

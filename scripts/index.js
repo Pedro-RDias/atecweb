@@ -3,13 +3,58 @@ const language = Vue.reactive(
         current: 'en',
         available: ['en', 'pt'],
         changeLanguage(lang) {
-            console.log(lang);
             if (this.available.includes(lang) && lang !== this.current) {
                 this.current = lang;
             }
         }
     }
 )
+
+const getLanguage = (lang) => {
+    switch (lang) {
+        case 'pt':
+            return {
+                navbar: navbar_pt_pt,
+                banner: banner_pt_pt,
+                about: about_pt_pt,
+                skills: skills_pt_pt,
+                languages: languages_pt_pt,
+                interests: interests_pt_pt,
+                hobbies: hobbies_pt_pt,
+                portfolio: portfolio_pt_pt,
+                contact: contact_pt_pt,
+                timeline_banner: resume_banner_pt_pt,
+                timeline: timeline_pt_pt,
+                timelineLabels: timelineLabels_pt_pt
+
+
+            };
+        case 'en':
+        default:
+            return {
+                navbar: navbar_en,
+                banner: banner_en,
+                about: about_en,
+                skills: skills_en,
+                languages: languages_en,
+                interests: interests_en,
+                hobbies: hobbies_en,
+                portfolio: portfolio_en,
+                contact: contact_en,
+                timeline_banner: resume_banner_en,
+                timeline: timeline_en,
+                timelineLabels: timelineLabels_en
+            };
+    }
+}
+
+const getTimeRange = (start, end) => {
+    if (!start || !end) return '';
+    if (Object.prototype.toString.call(start) !== '[object Date]' || Object.prototype.toString.call(end) !== '[object Date]') return '';
+    const startDate = start.getMonth() + 1 + '/' + start.getFullYear();
+    const endDate = end.getFullYear() === new Date().getFullYear() ? 'Present' : end.getMonth() + 1 + '/' + end.getFullYear();
+    return `${startDate} - ${endDate}`;
+};
 
 const app = Vue.createApp();
 
@@ -50,21 +95,11 @@ app.component('vnavbar', {
                 return this.showBackround.show ? 'border-bottom border-body bg-body-tertiary' : '';
             }
         },
-        themeStyle: {
-            get() {
-                return this.showBackround.show ? '' : 'dark';
-            }
+        themeStyle() {
+            return this.showBackround.show ? '' : 'dark';
         },
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return navbar_pt_pt;
-                    case 'en':
-                    default:
-                        return navbar_en;
-                }
-            }
+        info() {
+            return getLanguage(language.current).navbar;
         }
     }
 });
@@ -120,27 +155,15 @@ app.component('vbanner', {
                     this.phraseStore.startWritting(this.info.jobTitles.length);
                 }
             }
-
-
         }, 50);
         return () => clearInterval(timeRef);
     },
     computed: {
-        line: {
-            get() {
-                return this.info.jobTitles[this.phraseStore.index].slice(0, this.phraseStore.lineLength);
-            },
+        line() {
+            return this.info.jobTitles[this.phraseStore.index].slice(0, this.phraseStore.lineLength);
         },
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return banner_pt_pt;
-                    case 'en':
-                    default:
-                        return banner_en;
-                }
-            }
+        info() {
+            return getLanguage(language.current).banner;
         }
     },
 });
@@ -148,26 +171,13 @@ app.component('vbanner', {
 app.component('vabout', {
     template: '#vue_about',
     computed: {
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return about_pt_pt;
-                    case 'en':
-                    default:
-                        return about_en;
-                }
-
-            }
+        info() {
+            return getLanguage(language.current).about;
         }
     }
 });
 
 // About Components
-app.component('vfooter', {
-    template: '#vue_footer'
-});
-
 app.component('certification_list', {
     template: '#vue_certification_list',
     data() {
@@ -176,15 +186,12 @@ app.component('certification_list', {
         }
     },
     computed: {
-        certTotal: {
-            get() {
-                return this.certifications.length;
-            }
-        }
-    }
+        certTotal() {
+            return this.certifications.length;
+        },
+    },
 });
 
-// Components
 app.component('skill-list', {
     template: '#vue_skill_list',
     setup() {
@@ -195,28 +202,18 @@ app.component('skill-list', {
         }
     },
     computed: {
-        filteredSkills: {
-            get() {
-                const s = skills.filter(skill => {
-                    if (this.skill_search === '') return true;
-                    else if (skill.name.toLowerCase().includes(this.skill_search.toLowerCase())) return true;
-                    else return skill.tags.some(keyword => keyword.toLowerCase().includes(this.skill_search.toLowerCase()));
-                });
+        filteredSkills() {
+            const s = skills.filter(skill => {
+                if (this.skill_search === '') return true;
+                else if (skill.name.toLowerCase().includes(this.skill_search.toLowerCase())) return true;
+                else return skill.tags.some(keyword => keyword.toLowerCase().includes(this.skill_search.toLowerCase()));
+            });
 
-                return s.length > 0 ? s.slice(0, 12) : this.skills.slice(0, 12);
-            }
+            return s.length > 0 ? s.slice(0, 12) : this.skills.slice(0, 12);
+
         },
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return skills_pt_pt;
-                    case 'en':
-                    default:
-                        return skills_en;
-                }
-
-            }
+        info() {
+            return getLanguage(language.current).skills;
         },
 
     }
@@ -225,16 +222,8 @@ app.component('skill-list', {
 app.component('language_list', {
     template: '#vue_language_list',
     computed: {
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return languages_pt_pt;
-                    case 'en':
-                    default:
-                        return languages_en;
-                }
-            },
+        info() {
+            return getLanguage(language.current).languages;
         }
     },
 
@@ -243,16 +232,8 @@ app.component('language_list', {
 app.component('interests_list', {
     template: '#vue_interests_list',
     computed: {
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return interests_pt_pt;
-                    case 'en':
-                    default:
-                        return interests_en;
-                }
-            },
+        info() {
+            return getLanguage(language.current).interests;
         },
     },
 });
@@ -260,17 +241,9 @@ app.component('interests_list', {
 app.component('hobbies_list', {
     template: '#vue_hobbies_list',
     computed: {
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return hobbies_pt_pt;
-                    case 'en':
-                    default:
-                        return hobbies_en;
-                }
-            },
-        },
+        info() {
+            return getLanguage(language.current).hobbies;
+        }
     },
 });
 // .About Components
@@ -278,34 +251,18 @@ app.component('hobbies_list', {
 app.component('vportfolio', {
     template: '#vue_portfolio',
     computed: {
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return portfolio_pt_pt;
-                    case 'en':
-                    default:
-                        return portfolio_en;
-                }
-            },
+        info() {
+            return getLanguage(language.current).portfolio;
         }
     }
 });
 
+// Footer Components
 app.component('vcontact', {
     template: '#vue_contact',
     computed: {
-        info: {
-            get() {
-                switch (language.current) {
-                    case 'pt':
-                        return contact_pt_pt;
-                    case 'en':
-                    default:
-                        return contact_en;
-                }
-            },
-
+        info() {
+            return getLanguage(language.current).contact;
         }
     },
     methods: {
@@ -324,6 +281,86 @@ app.component('vcontact', {
         },
     }
 });
+
+/***********************
+ Resume Components
+ ***********************/
+
+app.component('vresumebanner', {
+    template: '#vue_resume_banner',
+    computed: {
+
+        info() {
+            return getLanguage(language.current).timeline_banner;
+
+        }
+    }
+});
+
+app.component('vtimeline', {
+    template: '#vue_timeline',
+    computed: {
+        info() {
+            return getLanguage(language.current).timeline;
+        },
+        labels() {
+            return getLanguage(language.current).timelineLabels;
+        }
+    },
+    methods: {
+        getExperienceLinks(y) {
+            return this.info
+                .reduce((acc, year) => {
+                    return [...acc, ...year.items]
+                }, [])
+                .filter(item => {
+                    if (item.type !== 'professional') return false;
+                    console.log(item);
+                    const startDate = new Date(item.startDate).getFullYear();
+                    const endDate = new Date(item.endDate).getFullYear();
+                    return startDate <= y && endDate > y;
+                })
+        },
+    }
+
+});
+
+
+app.component('vcolapse', {
+    template: '#vue_colapse',
+    props: ['item', 'linkid'],
+    setup() {
+        const bsCollapse = Vue.reactive({
+            collapse: null,
+            toggleCollapse() {
+                this.collapse.toggle();
+            }
+        });
+        return {
+            bsCollapse
+        }
+    },
+    mounted() {
+        this.bsCollapse.collapse = new bootstrap.Collapse(`#collapse_${this.linkid}`, {toggle: false});
+    },
+    methods: {
+        toogleCollapse(id) {
+            this.bsCollapse.toggleCollapse();
+        }
+    },
+    computed: {
+        info() {
+            return getLanguage(language.current).timelineLabels;
+        },
+        dateRange() {
+
+            if (this.item.type === 'certification' && this.item.completionDate) return this.item.completionDate.getFullYear();
+            else if(this.item.startDate && this.item.endDate) return getTimeRange(this.item.startDate, this.item.endDate);
+            return "";
+        }
+    }
+});
+
 
 app.mount('#app')
 

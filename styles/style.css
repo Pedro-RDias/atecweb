@@ -5,12 +5,6 @@
     --font-famaily-accent: 'VT323', monospace;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 .page-title {
     font-size: 3rem;
     font-weight: 500;
@@ -163,4 +157,36 @@ ul {
 
 .border-warning-subtle {
     border-color: var(--title-accent) !important;
+}
+
+/*
+    Resume
+*/
+
+#resume_banner {
+    background: url('../images/background-resume.jpg') rgba(0, 0, 0, 0.5);
+    background-blend-mode: overlay;
+    background-size: cover;
+    min-height: 70vh;
+}
+
+.year-label {
+    color: var(--title-accent);
+    font-family: var(--font-famaily-accent);
+    letter-spacing: 2px;
+    direction: ltr;
+    rotate: 270deg;
+}
+
+.timeline-item {
+    cursor: pointer;
+    transition: ease-in 0.2s;
+}
+
+.timeline-item:hover {
+    background: rgba(251, 168, 52, 0.3);
+}
+
+.timeline-item-collapse-p {
+
 }
