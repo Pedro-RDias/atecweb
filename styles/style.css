@@ -1,14 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 :root {
-    --title-accent: #FBA834;
+    --title-accent: #fba834;
     --font-famaily-accent: 'VT323', monospace;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
 }
 
 .page-title {
@@ -17,6 +11,7 @@ ul {
     color: var(--title-accent);
     font-family: var(--font-famaily-accent);
     letter-spacing: 3px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .page-subtitle {
@@ -25,24 +20,24 @@ ul {
     color: var(--title-accent);
     font-family: var(--font-famaily-accent);
     letter-spacing: 1px;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Banner */
 .profile-img {
     display: block;
     max-height: 70vh;
-    filter: brightness(75%);
+    filter: brightness(90%);
     opacity: 0.9;
-    clip-path: polygon(0% 0%,
-    100% 0%,
-    100% 75%,
-    0% 100%
-    );
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 0% 100%);
+}
+
+.header-title {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .banner-emoji {
     font-size: 2rem;
-
 }
 
 #home {
@@ -71,17 +66,18 @@ ul {
     100% {
         opacity: 1;
     }
+}
 
+.catch-phrases {
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
 .catch-phrase {
     color: var(--title-accent);
-    font-weight: 500;
     font-family: var(--font-famaily-accent);
     letter-spacing: 1px;
-    font-size: 1.3rem;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
-
 
 @media (max-width: 768px) {
     .profile-img {
@@ -113,7 +109,13 @@ ul {
 
 .progress-bar {
     background-color: var(--title-accent);
-    background: linear-gradient(90deg, rgba(255, 204, 80, 0.95) 0%, rgba(251, 168, 52, 1) 20%, rgba(251, 168, 52, 1) 90%, rgb(234, 136, 0) 100%);
+    background: linear-gradient(
+            90deg,
+            rgba(255, 204, 80, 0.95) 0%,
+            rgba(251, 168, 52, 1) 20%,
+            rgba(251, 168, 52, 1) 90%,
+            rgb(234, 136, 0) 100%
+    );
 }
 
 .about-list li {
@@ -124,7 +126,6 @@ ul {
     color: var(--title-accent);
     background: rgba(251, 168, 52, 0.05);
     border-radius: 10px;
-
 }
 
 /* .About Me */
@@ -147,7 +148,6 @@ ul {
     color: var(--title-accent);
 }
 
-
 /* BS Warning */
 
 .btn-outline-warning {
@@ -163,4 +163,25 @@ ul {
 
 .border-warning-subtle {
     border-color: var(--title-accent) !important;
+}
+
+/*
+    Resume
+*/
+
+.year-label {
+    color: var(--title-accent);
+    font-family: var(--font-famaily-accent);
+    letter-spacing: 2px;
+    direction: ltr;
+    rotate: 270deg;
+}
+
+.timeline-item {
+    cursor: pointer;
+    transition: ease-in 0.2s;
+}
+
+.timeline-item:hover {
+    background: rgba(251, 168, 52, 0.3);
 }
