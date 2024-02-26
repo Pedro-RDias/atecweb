@@ -291,7 +291,7 @@ const navbar_pt_pt = {
 
 const resume_banner_pt_pt = {
     title: 'Pedro Ribeiro Dias',
-    subtitle: '⏳ Linhas do Tempo ⌛',
+    subtitle: '⏳ Linha do Tempo ⌛',
 };
 
 const timeline_pt_pt = [

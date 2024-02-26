@@ -1,9 +1,19 @@
+// language to local storage
+const saveLanguage = (lang) => {
+    localStorage.setItem('language', lang);
+};
+
+const getSavedLanguage = () => {
+    return localStorage.getItem('language') || 'en';
+};
+
 // language Vue state management
 const language = Vue.reactive({
-    current: 'en',
+    current: getSavedLanguage(),
     available: ['en', 'pt'],
     changeLanguage(lang) {
         if (this.available.includes(lang) && lang !== this.current) {
+            saveLanguage(lang);
             this.current = lang;
         }
     },
