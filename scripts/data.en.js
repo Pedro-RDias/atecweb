@@ -1,9 +1,4 @@
-// const urlPath = 'https://pedro-rdias.github.io/atecweb/';
-// const imgagesPath = `${urlPath}images/`;
-// const imgagesPath = './images/';
-// const urlPath = '/';
-
-const urlPath = window.location.href.includes('atecweb') ? 'https://pedro-rdias.github.io/atecweb/' : '/';
+const urlPath = window.location.href.includes('://pedro-rdias.github.io/atecweb') ? 'https://pedro-rdias.github.io/atecweb/' : '/';
 const imgagesPath = `${urlPath}images/`;
 
 const skills = [
