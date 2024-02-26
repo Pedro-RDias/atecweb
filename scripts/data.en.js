@@ -1,5 +1,5 @@
 const urlPath = 'https://pedro-rdias.github.io/atecweb/';
-const imgagesPath = 'https://pedro-rdias.github.io/atecweb/images/';
+const imgagesPath = `${urlPath}images/`;
 // const imgagesPath = './images/';
 // const urlPath = '/';
 
