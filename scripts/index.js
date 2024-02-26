@@ -42,7 +42,7 @@ const theme = Vue.reactive({
 
 // Bootstrap Theme
 const switchTheme = (theme) => {
-    document.documentElement.setAttribute('data-bs-theme', theme)
+    document.documentElement.setAttribute('data-bs-theme', theme);
 };
 
 // Language Data Filter
@@ -102,7 +102,7 @@ const app = Vue.createApp(
         setup() {
             switchTheme(theme.current);
         },
-    }
+    },
 );
 
 // Header Components
