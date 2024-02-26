@@ -1,7 +1,5 @@
-const urlPath = 'https://pedro-rdias.github.io/atecweb/';
+const urlPath = window.location.href.includes('://pedro-rdias.github.io/atecweb') ? 'https://pedro-rdias.github.io/atecweb/' : '/';
 const imgagesPath = `${urlPath}images/`;
-// const imgagesPath = './images/';
-// const urlPath = '/';
 
 const skills = [
     {name: 'JavaScript', img: 'js', tags: ['frontend', 'backend', 'fullstack', 'web', 'programming language']},
@@ -305,7 +303,7 @@ const contact_en = {
             name: 'email',
             link: 'mailto:Pedro.Dias.T0098247@edu.atec.pt',
             icon: `${imgagesPath}socials/email.svg`,
-            message: 'Envia-me um email',
+            message: 'Send me an email',
         },
     ],
     formTitle: 'Want to get in touch?',
@@ -379,12 +377,25 @@ const navbar_en = {
         title: 'Language',
         options: [
             {
-                name: 'EN',
+                name: 'English',
                 code: 'en',
             },
             {
-                name: 'PT',
+                name: 'Portuguese',
                 code: 'pt',
+            },
+        ],
+    },
+    themeDropdown: {
+        title: 'Theme',
+        options: [
+            {
+                name: 'Light',
+                code: 'light',
+            },
+            {
+                name: 'Dark',
+                code: 'dark',
             },
         ],
     },

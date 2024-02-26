@@ -1,13 +1,49 @@
+// local storage
+const saveLanguage = (lang) => {
+    localStorage.setItem('language', lang);
+};
+
+const getSavedLanguage = () => {
+    return localStorage.getItem('language') || 'en';
+};
+
+const saveTheme = (theme) => {
+    localStorage.setItem('theme', theme);
+};
+
+const getSavedTheme = () => {
+    return localStorage.getItem('theme') || 'dark';
+};
+
 // language Vue state management
 const language = Vue.reactive({
-    current: 'en',
+    current: getSavedLanguage(),
     available: ['en', 'pt'],
     changeLanguage(lang) {
         if (this.available.includes(lang) && lang !== this.current) {
+            saveLanguage(lang);
             this.current = lang;
         }
     },
 });
+
+// Theme Vue state management
+const theme = Vue.reactive({
+    current: getSavedTheme(),
+    available: ['dark', 'light'],
+    changeTheme(theme) {
+        if (this.available.includes(theme) && theme !== this.current) {
+            saveTheme(theme);
+            switchTheme(theme);
+            this.current = theme;
+        }
+    },
+});
+
+// Bootstrap Theme
+const switchTheme = (theme) => {
+    document.documentElement.setAttribute('data-bs-theme', theme);
+};
 
 // Language Data Filter
 const getLanguage = (lang) => {
@@ -61,7 +97,13 @@ const getTimeRange = (start, end) => {
 };
 
 // Vue App
-const app = Vue.createApp();
+const app = Vue.createApp(
+    {
+        setup() {
+            switchTheme(theme.current);
+        },
+    },
+);
 
 // Header Components
 const navOffset = 50;
@@ -77,6 +119,7 @@ app.component('vnavbar', {
         return {
             showBackround,
             language,
+            theme,
         };
     },
     created() {
@@ -87,7 +130,6 @@ app.component('vnavbar', {
     },
     methods: {
         handleScroll() {
-            // Any code to be executed when the window is scrolled
             if (
                 (window.scrollY > window.innerHeight - navOffset && !this.showBackround.show) ||
                 (window.scrollY < window.innerHeight - navOffset && this.showBackround.show)

@@ -75,6 +75,24 @@
                                 </li>
                             </ul>
                         </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                    aria-expanded="false"
+                                    class="nav-link dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    href="#"
+                                    role="button"
+                            >
+                                {{info.themeDropdown.title}}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-md-start list-unstyled">
+                                <li v-for="t in info.themeDropdown.options">
+                                    <button @click="()=>theme.changeTheme(t.code)" class="dropdown-item">
+                                        <span v-if="t.code === theme.current">🎯</span> {{t.name}}
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
                         <li
                                 aria-controls="offcanvasNavbar"
                                 class="nav-item mx-1"
@@ -121,7 +139,7 @@
 <template id="vue_about">
     <section class="container page pt-5" id="aboutme">
         <div class="row g-5">
-            <h2 class="col-12 text-center pt-5 page-title">{{info.title}}</h2>
+            <h2 class="col-12 text-center pt-5 display-2 page-title">{{info.title}}</h2>
             <div class="col-12 col-md-6">
                 <!-- About Me Text -->
                 <p class="about-text" v-for="line in info.description">{{line}}</p>
@@ -178,7 +196,7 @@
 <!-- Vue Component for the interests list -->
 <template id="vue_interests_list">
     <section class="container">
-        <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
+        <h3 class="display-5 page-subtitle text-center mb-4">{{info.title}}</h3>
         <ul class="row about-list g-2 list-unstyled">
             <li class="col-4 text-center py-2" v-for="int in info.interests">
                 <img :alt="`Interest icon ${int.title}`" :src="int.icon" class="img-fluid hobbie-img"/>
@@ -190,7 +208,7 @@
 <!-- Vue Component for the hobbies list -->
 <template id="vue_hobbies_list">
     <section class="container">
-        <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
+        <h3 class="display-5 page-subtitle text-center mb-4">{{info.title}}</h3>
         <ul class="row about-list g-2 list-unstyled">
             <li class="col-4 text-center py-2" v-for="hobbie in info.hobbies">
                 <img :alt="`Hobbie icon ${hobbie.title}`" :src="hobbie.icon" class="img-fluid hobbie-img"/>
@@ -202,7 +220,7 @@
 <!-- Vue Component for the skill list -->
 <template id="vue_skill_list">
     <section>
-        <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
+        <h3 class="display-5 page-subtitle text-center mb-4">{{info.title}}</h3>
         <!-- Skill Searchbar -->
         <div class="input-group input-group-lg mt-3 mb-4">
             <label class="form-label mb-2" for="skill-searchbar">{{info.input_label}}</label>
@@ -234,7 +252,7 @@
 <!-- Vue Component for the language list -->
 <template id="vue_language_list">
     <section class="container">
-        <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
+        <h3 class="display-5 page-subtitle text-center mb-4">{{info.title}}</h3>
         <ul class="about-list list-unstyled">
             <li class="py-2 py-md-3" v-for="language in info.languages">
                 <article class="px-3 mb-2">
@@ -261,7 +279,7 @@
 <!-- Portfolio -->
 <template id="vue_portfolio">
     <section class="container pt-5 page" id="portfolio">
-        <h2 class="page-title text-center pt-5 pt-4">{{info.title}}</h2>
+        <h2 class="display-2 page-title text-center pt-5 pt-4">{{info.title}}</h2>
         <div class="row justify-content-center">
             <div class="col-12 col-sm-6 col-lg-3 gy-3 gy-md-5 gx-0 gx-3 d-flex" v-for="proj in info.projects">
                 <article class="card border-2 border-warning-subtle">
@@ -297,7 +315,7 @@
         <div class="row g-5">
             <!-- Social Links -->
             <section class="col-12 col-md-6">
-                <h3 class="page-subtitle text-center mb-4">{{info.title}}</h3>
+                <h3 class="display-5 page-subtitle text-center mb-4">{{info.title}}</h3>
                 <div class="row justify-content-center">
                     <article :key="social.name" class="col-md-6 p-1 h-100" v-for="social in info.socials">
                         <a
@@ -313,7 +331,7 @@
             </section>
             <!-- Contact Form-->
             <section class="col-12 col-md-6">
-                <h3 class="page-subtitle text-center mb-4">{{info.formTitle}}</h3>
+                <h3 class="display-5 page-subtitle text-center mb-4">{{info.formTitle}}</h3>
                 <form @submit="submitForm" class="row g-3 needs-validation">
                     <div :class="{ 'col-md-6': ff.size === 6 }" class="col-12" v-for="ff in info.formFields">
                         <label :for="ff.name" class="form-label">{{ff.label}}</label>

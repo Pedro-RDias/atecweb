@@ -278,12 +278,25 @@ const navbar_pt_pt = {
         title: 'Idioma',
         options: [
             {
-                name: 'EN',
+                name: 'Inglês',
                 code: 'en',
             },
             {
-                name: 'PT',
+                name: 'Português',
                 code: 'pt',
+            },
+        ],
+    },
+    themeDropdown: {
+        title: 'Tema',
+        options: [
+            {
+                name: 'Claro',
+                code: 'light',
+            },
+            {
+                name: 'Escuro',
+                code: 'dark',
             },
         ],
     },
@@ -291,7 +304,7 @@ const navbar_pt_pt = {
 
 const resume_banner_pt_pt = {
     title: 'Pedro Ribeiro Dias',
-    subtitle: '⏳ Linhas do Tempo ⌛',
+    subtitle: '⏳ Linha do Tempo ⌛',
 };
 
 const timeline_pt_pt = [
