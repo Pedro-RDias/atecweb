@@ -305,7 +305,7 @@ const contact_en = {
             name: 'email',
             link: 'mailto:Pedro.Dias.T0098247@edu.atec.pt',
             icon: `${imgagesPath}socials/email.svg`,
-            message: 'Envia-me um email',
+            message: 'Send me an email',
         },
     ],
     formTitle: 'Want to get in touch?',
