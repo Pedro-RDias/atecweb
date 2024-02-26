@@ -1,7 +1,10 @@
-const urlPath = 'https://pedro-rdias.github.io/atecweb/';
-const imgagesPath = `${urlPath}images/`;
+// const urlPath = 'https://pedro-rdias.github.io/atecweb/';
+// const imgagesPath = `${urlPath}images/`;
 // const imgagesPath = './images/';
 // const urlPath = '/';
+
+const urlPath = window.location.href.includes('atecweb') ? 'https://pedro-rdias.github.io/atecweb/' : '/';
+const imgagesPath = `${urlPath}images/`;
 
 const skills = [
     {name: 'JavaScript', img: 'js', tags: ['frontend', 'backend', 'fullstack', 'web', 'programming language']},
@@ -379,12 +382,25 @@ const navbar_en = {
         title: 'Language',
         options: [
             {
-                name: 'EN',
+                name: 'English',
                 code: 'en',
             },
             {
-                name: 'PT',
+                name: 'Portuguese',
                 code: 'pt',
+            },
+        ],
+    },
+    themeDropdown: {
+        title: 'Theme',
+        options: [
+            {
+                name: 'Light',
+                code: 'light',
+            },
+            {
+                name: 'Dark',
+                code: 'dark',
             },
         ],
     },

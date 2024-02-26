@@ -30,11 +30,7 @@
 <!-- Header Components -->
 <template id="vue_navbar">
     <!-- Navbar -->
-    <nav
-            :class="backgroundStyle"
-            :data-bs-theme="themeStyle"
-            class="navbar navbar-expand-lg border-bottom border-body bg-body-tertiary"
-    >
+    <nav :data-bs-theme="theme.current" class="navbar navbar-expand-lg border-bottom border-body bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">{{info.title}}</a>
             <button
@@ -59,7 +55,7 @@
                 </div>
                 <div class="offcanvas-body">
                     <!-- Links -->
-                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 list-unstyled">
                         <li class="nav-item dropdown">
                             <a
                                     aria-expanded="false"
@@ -70,12 +66,31 @@
                             >
                                 {{info.languageDropdown.title}}
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-md-start">
+                            <ul class="dropdown-menu dropdown-menu-md-start list-unstyled">
                                 <li v-for="l in info.languageDropdown.options">
                                     <button @click="()=>language.changeLanguage(l.code)" class="dropdown-item">
                                         <span v-if="l.code === language.current">🎯</span> {{l.name}}
                                     </button>
                                 </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a
+                                    aria-expanded="false"
+                                    class="nav-link dropdown-toggle"
+                                    data-bs-toggle="dropdown"
+                                    href="#"
+                                    role="button"
+                            >
+                                {{info.themeDropdown.title}}
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-md-start list-unstyled">
+                                <li v-for="t in info.themeDropdown.options">
+                                    <button @click="()=>theme.changeTheme(t.code)" class="dropdown-item">
+                                        <span v-if="t.code === theme.current">🎯</span> {{t.name}}
+                                    </button>
+                                </li>
+      
                             </ul>
                         </li>
                         <li
