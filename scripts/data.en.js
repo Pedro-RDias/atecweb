@@ -1,6 +1,7 @@
 const urlPath = window.location.href.includes('://pedro-rdias.github.io/atecweb') ? 'https://pedro-rdias.github.io/atecweb/' : '/';
 const imgagesPath = `${urlPath}images/`;
 
+
 const skills = [
     {name: 'JavaScript', img: 'js', tags: ['frontend', 'backend', 'fullstack', 'web', 'programming language']},
     {name: 'TypeScript', img: 'ts', tags: ['frontend', 'backend', 'fullstack', 'web', 'programming language']},
