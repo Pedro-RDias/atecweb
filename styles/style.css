@@ -41,7 +41,7 @@
 }
 
 #home {
-    background: url('../images/background.jpg') rgba(0, 0, 0, 0.5);
+    background: url('https://pedro-rdias.github.io/atecweb/images/background.jpg') rgba(0, 0, 0, 0.5);
     background-blend-mode: overlay;
     background-size: cover;
     min-height: 100vh;
